@@ -1,5 +1,6 @@
 ﻿using Windows.UI.Xaml.Controls;
 using MvvmCross.Core.ViewModels;
+using MvvmCross.Platform;
 using MvvmCross.WindowsUWP.Platform;
 using MvvmCross.WindowsUWP.Views;
 

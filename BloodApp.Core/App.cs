@@ -6,7 +6,7 @@ namespace BloodApp.Core
 	{
 		public App()
 		{
-			
+			// todo: setup IoC
 		}
 	}
 }

@@ -71,7 +71,7 @@ namespace BloodApp.UI.Uwp
 
             if (rootFrame.Content == null)
             {
-                var setup = new Setup(rootFrame);
+               var setup = new Setup(rootFrame);
 				setup.Initialize();
 
 	            var start = Mvx.Resolve<IMvxAppStart>();

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{C02A1A96-F8C2-415F-8CF0-969A6FD0C768}</ProjectGuid>
+    <ProjectGuid>{A30C6726-0A26-41D7-AA85-753A7C52A501}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BloodApp.UI.Uwp</RootNamespace>
@@ -122,12 +122,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BloodApp.Core\BloodApp.Core.csproj">
-      <Project>{3debc313-9678-42ae-9bab-94943208b5a5}</Project>
+      <Project>{26d214e0-a2e0-4bee-a52d-1c537577d436}</Project>
       <Name>BloodApp.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

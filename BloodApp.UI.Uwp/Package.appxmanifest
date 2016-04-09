@@ -7,11 +7,11 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="cfd606c0-482c-43e4-bb57-8f97a330a0ce"
+    Name="b338eed2-094f-4c89-8f24-8ac73346c588"
     Publisher="CN=Mário"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="cfd606c0-482c-43e4-bb57-8f97a330a0ce" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="b338eed2-094f-4c89-8f24-8ac73346c588" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>BloodApp.UI.Uwp</DisplayName>
