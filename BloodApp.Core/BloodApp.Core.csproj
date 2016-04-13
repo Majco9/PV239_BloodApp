@@ -36,10 +36,14 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Model\Address.cs" />
-    <Compile Include="Model\BloodDonationEvent.cs" />
+    <Compile Include="Model\BloodDonation.cs" />
     <Compile Include="Model\Demand.cs" />
     <Compile Include="Model\Event.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IEventService.cs" />
+    <Compile Include="Services\TestEventService.cs" />
+    <Compile Include="ViewModels\EventListItemViewModel.cs" />
+    <Compile Include="ViewModels\EventListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MvvmCross.Core, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -54,10 +58,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

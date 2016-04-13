@@ -26,6 +26,11 @@ namespace BloodApp.Core.Model
 		/// Event's description
 		/// </summary>
 		public string Description { get; set; }
+
+		/// <summary>
+		/// Event's address
+		/// </summary>
+		public Address Address { get; set; }
 		 
 	}
 }

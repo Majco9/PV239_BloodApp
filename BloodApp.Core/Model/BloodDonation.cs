@@ -1,6 +1,6 @@
 ﻿namespace BloodApp.Core.Model
 {
-	public class BloodDonationEvent
+	public class BloodDonation : Event
 	{
 		/// <summary>
 		/// Event organizator name
