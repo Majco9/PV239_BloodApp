@@ -11,7 +11,7 @@ namespace BloodApp.Core
 		{
 			// todo: setup IoC
 			Mvx.RegisterType<IEventService, TestEventService>();
-			Mvx.RegisterSingleton<IMvxAppStart>(new MvxAppStart<EventListViewModel>());
+			Mvx.RegisterSingleton<IMvxAppStart>(new MvxAppStart<LoginViewModel>());
 		}
 	}
 }
