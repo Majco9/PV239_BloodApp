@@ -1,21 +1,49 @@
-﻿namespace BloodApp.Core.Model
+﻿using System;
+
+namespace BloodApp.Core.Model
 {
-	public class BloodDonation : Event
+	public class BloodDonation
 	{
+
 		/// <summary>
-		/// Event organizator name
+		/// donation's guid
+		/// </summary>
+		public string Id { get; set; }
+
+		/// <summary>
+		/// Guid of user that created this donation offer
+		/// </summary>
+		public string DonorId { get; set; }
+
+		/// <summary>
+		/// Event organizator's name
 		/// </summary>
 		public string OrganizatorName { get; set; }
 
 		/// <summary>
-		/// Event organizator email
+		/// Event's name
 		/// </summary>
-		public string OrganizatorEmail { get; set; }
+		public string Name { get; set; }
 
 		/// <summary>
-		/// Event organizator phone
+		/// Event's description
 		/// </summary>
-		public string OrganizatorPhone { get; set; }
+		public string Description { get; set; }
+
+		/// <summary>
+		/// Event's date
+		/// </summary>
+		public DateTime? Date { get; set; }
+
+		/// <summary>
+		/// Event's place
+		/// </summary>
+		public Address Address { get; set; }
+
+		/// <summary>
+		/// Donation's created date
+		/// </summary>
+		public DateTime CreatedAt { get; set; }
 		 
 	}
 }

@@ -98,8 +98,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Setup.cs" />
-    <Compile Include="Views\EventListView.xaml.cs">
-      <DependentUpon>EventListView.xaml</DependentUpon>
+    <Compile Include="Views\BloodDonationListView.xaml.cs">
+      <DependentUpon>BloodDonationListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -137,7 +137,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\EventListView.xaml">
+    <Page Include="Views\BloodDonationListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

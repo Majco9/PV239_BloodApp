@@ -5,12 +5,12 @@ using BloodApp.Core.Model;
 
 namespace BloodApp.Core.Services
 {
-	public interface IEventService
+	public interface IBloodDonationService
 	{
-		Task<IList<Event>> ListAllEventsAsync();
 
 		Task<IList<BloodDonation>> ListAllBloodDonationsAsync();
 
-		Task<IList<Demand>> ListAllDemandsAsync();
+		Task<BloodDonation> GetBloodDonation(string id);
+
 	}
 }

@@ -6,14 +6,9 @@
 	public class Address
 	{
 		/// <summary>
-		/// Address's identifier
-		/// </summary>
-		public long Id { get; set; }
-
-		/// <summary>
 		/// Address's place title (some building, hostipal, ...)
 		/// </summary>
-		public string PlaceTitle { get; set; }
+		public string Title { get; set; }
 
 		/// <summary>
 		/// Address's street
@@ -29,5 +24,10 @@
 		/// Address's state
 		/// </summary>
 		public string State { get; set; }
+
+		/// <summary>
+		/// Address's zip code
+		/// </summary>
+		public string ZipCode { get; set; }
 	}
 }

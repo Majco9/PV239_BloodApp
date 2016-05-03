@@ -5,41 +5,40 @@ using BloodApp.Core.Model;
 
 namespace BloodApp.Core.Services
 {
-	public class TestEventService : IEventService
+	public class TestBloodDonationService : IBloodDonationService
 	{
-		public async Task<IList<Event>> ListAllEventsAsync()
+		
+		public async Task<IList<BloodDonation>> ListAllBloodDonationsAsync()
 		{
 			return await Task.Run(() =>
 			{
-				var result = new List<Event>();
+				var result = new List<BloodDonation>();
 
-				result.Add(new Event
+				result.Add(new BloodDonation
 				{
-					Id = 0,
+					Id = Guid.NewGuid().ToString(),
 					Name = "Test Event 1",
 					Date = DateTime.Now,
 					Description = "Lorem ipsum",
 					Address = new Address
 					{
-						Id = 0,
 						Street = "Testovacia 10",
-						PlaceTitle = "Poliklinka",
+						Title = "Poliklinka",
 						City = "Mordor",
 						State = ""
 					}
 				});
 
-				result.Add(new Event
+				result.Add(new BloodDonation
 				{
-					Id = 1,
+					Id = Guid.NewGuid().ToString(),
 					Name = "Test Event 2",
 					Date = DateTime.Now,
 					Description = "Lorem ipsum",
 					Address = new Address
 					{
-						Id = 1,
 						Street = "Testovacia 2",
-						PlaceTitle = "Krcma",
+						Title = "Krcma",
 						City = "Mordor",
 						State = ""
 					}
@@ -49,14 +48,9 @@ namespace BloodApp.Core.Services
 			});
 		}
 
-		public Task<IList<BloodDonation>> ListAllBloodDonationsAsync()
+		public Task<BloodDonation> GetBloodDonation(string id)
 		{
-			throw new System.NotImplementedException();
-		}
-
-		public Task<IList<Demand>> ListAllDemandsAsync()
-		{
-			throw new System.NotImplementedException();
+			throw new NotImplementedException();
 		}
 	}
 }
