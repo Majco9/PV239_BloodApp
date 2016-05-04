@@ -39,6 +39,7 @@ namespace BloodApp.Core.Services
 		{
 			try {
 				donation.Id = Guid.NewGuid().ToString();
+				donation.CreatedAt = DateTime.Now;
 				await this._client.GetTable<BloodDonation>().InsertAsync(donation);
 				return donation;
 			} catch (Exception ex) {

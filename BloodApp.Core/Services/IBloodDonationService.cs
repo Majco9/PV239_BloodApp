@@ -36,7 +36,7 @@ namespace BloodApp.Core.Services
 		/// <summary>
 		/// Removes blood donation event with given id
 		/// </summary>
-		/// <param name="donation"></param>
+		/// <param name="donation">blood donation</param>
 		Task RemoveBloodDonationAsync(BloodDonation donation);
 
 	}

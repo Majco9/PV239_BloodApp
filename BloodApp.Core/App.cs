@@ -20,6 +20,9 @@ namespace BloodApp.Core
 		{
 			// todo: setup IoC
 			Mvx.RegisterType<IBloodDonationService, BloodDonationService>();
+			Mvx.RegisterType<IBloodDemandService, BloodDemandService>();
+			Mvx.RegisterType<IUserService, UserService>();
+
 			Mvx.RegisterSingleton<IMvxAppStart>(new MvxAppStart<BloodDonationListViewModel>());
 
 			var client = new MobileServiceClient(new Uri(App.ServerUri));

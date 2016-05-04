@@ -1,8 +1,5 @@
-﻿using System;
-using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml.Controls;
 using BloodApp.Core.Services;
-using BloodApp.UI.Uwp.Services;
-using Microsoft.WindowsAzure.MobileServices;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 using MvvmCross.WindowsUWP.Platform;
@@ -24,14 +21,6 @@ namespace BloodApp.UI.Uwp
 		protected override IMvxApplication CreateApp()
 		{
 			return new Core.App();
-		}
-
-		protected override void InitializeIoC()
-		{
-			base.InitializeIoC();
-
-			// define own services
-			Mvx.RegisterType<IUserService, UserService>();
 		}
 	}
 }

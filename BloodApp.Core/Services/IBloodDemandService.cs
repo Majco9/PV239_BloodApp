@@ -10,7 +10,7 @@ namespace BloodApp.Core.Services
 		/// Returns list of blood demands
 		/// </summary>
 		/// <returns>list contains blood demands</returns>
-		Task<List<BloodDemand>> ListAllBloodDemandsAsync();
+		Task<IList<BloodDemand>> ListAllBloodDemandsAsync();
 
 		/// <summary>
 		/// Returns blood demand with given id
@@ -28,8 +28,8 @@ namespace BloodApp.Core.Services
 		/// <summary>
 		/// Removes blood demand with given id
 		/// </summary>
-		/// <param name="id">blood demand's guid</param>
-		Task RemoveBloodDemandAsync(string id);
+		/// <param name="demand">blood demand</param>
+		Task RemoveBloodDemandAsync(BloodDemand demand);
 
 		/// <summary>
 		/// Create blood demand
