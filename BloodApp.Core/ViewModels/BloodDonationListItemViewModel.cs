@@ -15,7 +15,6 @@ namespace BloodApp.Core.ViewModels
 		
 		public string Name => this._event.Name;
 
-		public string Description => this._event.Description;
-		
+		public string Date => this._event.Date != null ? this._event.Date.Value.ToString("f") : string.Empty;
 	}
 }
