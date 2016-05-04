@@ -19,6 +19,6 @@ namespace BloodApp.Core.Services
 		/// <param name="user">user</param>
 		/// <param name="password">user's password</param>
 		/// <returns><value>true</value> if register was succesfull, otherwise returns <value>false</value></returns>
-		Task<bool> RegisterUser(User user, string password);
+		Task<bool> RegisterUserAsync(User user, string password);
 	}
 }

@@ -48,7 +48,7 @@ namespace BloodApp.Core.Services
 			});
 		}
 
-		public Task<BloodDonation> GetBloodDonation(string id)
+		public Task<BloodDonation> GetBloodDonationAsync(string id)
 		{
 			throw new NotImplementedException();
 		}

@@ -28,7 +28,7 @@ namespace BloodApp.Core.ViewModels
 							BloodGroup = this.BloodGroup
 						};
 
-						var registerResult = await Mvx.Resolve<IUserService>().RegisterUser(user, this.Password);
+						var registerResult = await Mvx.Resolve<IUserService>().RegisterUserAsync(user, this.Password);
 
 						if (registerResult)
 						{
