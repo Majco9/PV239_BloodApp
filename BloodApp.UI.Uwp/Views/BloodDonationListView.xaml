@@ -348,7 +348,7 @@
 							<DataTemplate>
 								<StackPanel>
 									<TextBlock Text="{Binding Name}" Style="{StaticResource BodyTextBlockStyle}" />
-									<TextBlock Text="{Binding Description}" Style="{StaticResource CaptionTextBlockStyle}" />
+									<TextBlock Text="{Binding Date}" Style="{StaticResource CaptionTextBlockStyle}" />
 								</StackPanel>
 							</DataTemplate>
 						</ListView.ItemTemplate>
