@@ -29,5 +29,10 @@
 		/// Address's zip code
 		/// </summary>
 		public string ZipCode { get; set; }
+
+		public override string ToString()
+		{
+			return $"{this.Title}, {this.Street}, {this.City}, {this.State} {this.ZipCode}";
+		}
 	}
 }
