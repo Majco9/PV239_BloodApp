@@ -44,7 +44,13 @@ namespace BloodApp.Core.Services
 
 		public Task<bool> RegisterUserAsync(User user, string password)
 		{
-			throw new System.NotImplementedException();
+			throw new NotImplementedException();
+		}
+
+		public string GetIdOfLoggedUser()
+		{
+			var settings = Mvx.Resolve<ISettings>();
+			return settings.Get<string>("userId");
 		}
 	}
 }
