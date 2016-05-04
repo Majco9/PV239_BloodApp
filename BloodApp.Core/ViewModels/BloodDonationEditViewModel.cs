@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Threading.Tasks;
 using BloodApp.Core.Model;
+using BloodApp.Core.Services;
 using BloodApp.Core.Services.Exceptions;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 
-namespace BloodApp.Core.Services
+namespace BloodApp.Core.ViewModels
 {
 	public class BloodDonationEditViewModel : MvxViewModel
 	{
 		private readonly string _donationId;
 		private readonly Lazy<IBloodDonationService> _donationService;
 		private readonly EditMode _editMode;
-		private IMvxCommand _saveCommand;
 
 		private BloodDonation _bloodDonation;
+		private IMvxCommand _saveCommand;
 
 		public BloodDonationEditViewModel(string donationId = null)
 		{
@@ -25,7 +26,6 @@ namespace BloodApp.Core.Services
 			} else {
 				this._editMode = EditMode.Modifying;
 				this._donationId = donationId;
-
 			}
 		}
 
@@ -37,27 +37,6 @@ namespace BloodApp.Core.Services
 				this._bloodDonation = value;
 				this.RaiseAllPropertiesChanged();
 			}
-		}
-
-		protected async Task LoadData()
-		{
-			try {
-				this.BloodDonation = await this._donationService.Value.GetBloodDonationAsync(this._donationId);
-			} catch (ServiceException) {
-				//todo: handle it
-			}
-		}
-
-		public override async void Start()
-		{
-			base.Start();
-			if (this._editMode == EditMode.Creating) {
-				var userService = Mvx.Resolve<IUserService>();
-				this.BloodDonation.DonorId = userService.GetIdOfLoggedUser();
-			} else {
-				await this.LoadData();
-			}
-
 		}
 
 		public string OrganizatorName
@@ -210,6 +189,26 @@ namespace BloodApp.Core.Services
 				}
 
 				return this._saveCommand;
+			}
+		}
+
+		protected async Task LoadData()
+		{
+			try {
+				this.BloodDonation = await this._donationService.Value.GetBloodDonationAsync(this._donationId);
+			} catch (ServiceException) {
+				//todo: handle it
+			}
+		}
+
+		public override async void Start()
+		{
+			base.Start();
+			if (this._editMode == EditMode.Creating) {
+				var userService = Mvx.Resolve<IUserService>();
+				this.BloodDonation.DonorId = userService.GetIdOfLoggedUser();
+			} else {
+				await this.LoadData();
 			}
 		}
 	}
