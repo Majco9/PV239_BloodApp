@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using BloodApp.Core.Services;
+using BloodApp.Core.Services.Exceptions;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 
@@ -34,8 +35,13 @@ namespace BloodApp.Core.ViewModels
 
 		protected async Task LoadData()
 		{
-			var events = await this._eventService.Value.ListAllBloodDonationsAsync();
-			this.DonationsCollection = new ObservableCollection<BloodDonationListItemViewModel>(events.Select(e => new BloodDonationListItemViewModel(e)));
+			try {
+				var events = await this._eventService.Value.ListAllBloodDonationsAsync();
+				this.DonationsCollection = new ObservableCollection<BloodDonationListItemViewModel>(events
+						.Select(e => new BloodDonationListItemViewModel(e)));
+			} catch (ServiceException ex) {
+				//todo: handle it (some toast)
+			}
 		}
 
 		public override async void Start()
