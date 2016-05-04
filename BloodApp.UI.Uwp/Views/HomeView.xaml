@@ -1,5 +1,5 @@
 ﻿<views:MvxWindowsPage
-    x:Class="BloodApp.UI.Uwp.Views.BloodDonationListView"
+    x:Class="BloodApp.UI.Uwp.Views.HomeView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:BloodApp.UI.Uwp.Views"
@@ -337,7 +337,7 @@
 
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 		<ScrollViewer Grid.Row="0" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
-			<Pivot Style="{StaticResource TabsStylePivotStyle}">
+			<Pivot Style="{StaticResource TabsStylePivotStyle}" DataContext="{Binding BloodDonationListViewModel}">
 				<PivotItem>
 					<PivotItem.Header>
 						<local:TabHeader Label="List" Glyph="&#xEA37;"/>

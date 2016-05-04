@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using BloodApp.Core.Services;
@@ -41,6 +42,7 @@ namespace BloodApp.Core.ViewModels
 						.Select(e => new BloodDonationListItemViewModel(e)));
 			} catch (ServiceException ex) {
 				//todo: handle it (some toast)
+				Debug.WriteLine("Error while loading data..message: {0}", ex.Message);
 			}
 		}
 
