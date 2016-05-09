@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Acr.Settings;
 using BloodApp.Core.Model;
 using BloodApp.Core.Model.Login;
 using Microsoft.WindowsAzure.MobileServices;
 using MvvmCross.Platform;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace BloodApp.Core.Services
 {
@@ -21,7 +24,14 @@ namespace BloodApp.Core.Services
 			};
 
 			try {
-				var result = await client.InvokeApiAsync<LoginUserModel, LoginResult>("auth/login", userLogin);
+				//var result = await client.InvokeApiAsync<LoginUserModel, LoginResult>("auth/login", userLogin);
+				var clientResult = await client.InvokeApiAsync("auth/login", JsonConvert.SerializeObject(userLogin), HttpMethod.Post, null);
+
+				if (clientResult == null) {
+					return false;
+				}
+
+				var result = JsonConvert.DeserializeObject<LoginResult>(clientResult.ToString());
 
 				if (result == null) {
 					return false;

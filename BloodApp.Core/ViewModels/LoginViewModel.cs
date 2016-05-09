@@ -46,7 +46,7 @@ namespace BloodApp.Core.ViewModels
 						var loginService = Mvx.Resolve<IUserService>();
 						var loginResult = await loginService.AuthenticateAsync(this._email, this._password);
 						if (loginResult) {
-							this.ShowViewModel<BloodDonationListViewModel>();
+							this.ShowViewModel<HomeViewModel>();
 						} else {
 							//todo: show dialog with error
 						}
