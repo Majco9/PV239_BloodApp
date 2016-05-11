@@ -38,7 +38,7 @@ namespace BloodApp.Core.ViewModels
 							if (registerResult) {
 								//todo: show dialog
 
-								this.ShowViewModel<BloodDonationListViewModel>();
+								this.ShowViewModel<HomeViewModel>();
 							} else {
 								//todo: show error dialog
 							}
