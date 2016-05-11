@@ -13,7 +13,7 @@ namespace BloodApp.Core.ViewModels
 			this._bloodDemand = bloodDemand;
 		}
 
-		public BloodDemand BloodDemand => this._bloodDemand;
+		public string Id => this._bloodDemand?.Id;
 
 		public string Created => this._bloodDemand?.CreatedAt.ToString("D");
 

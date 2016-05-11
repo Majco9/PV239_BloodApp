@@ -13,6 +13,8 @@ namespace BloodApp.Core.ViewModels
 			this._event= bloodEvent;
 		}
 		
+		public string Id => this._event?.Id;
+
 		public string Name => this._event.Name;
 
 		public string Date => this._event.Date != null ? this._event.Date.Value.ToString("f") : string.Empty;

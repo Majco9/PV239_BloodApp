@@ -39,7 +39,9 @@ namespace BloodApp.Core.ViewModels
 			set
 			{
 				this._selectedBloodDemand = value;
-				this.ShowViewModel<BloodDemandDetailViewModel>(new MvxBundle(new Dictionary<string, string> { { "id", this._selectedBloodDemand.BloodDemand?.Id } }));
+				if (this._selectedBloodDemand != null) {
+					this.ShowViewModel<BloodDemandDetailViewModel>(new { id = this._selectedBloodDemand.Id });
+				}
 			}
 		}
 

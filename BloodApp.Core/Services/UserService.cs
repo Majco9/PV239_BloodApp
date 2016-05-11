@@ -53,6 +53,11 @@ namespace BloodApp.Core.Services
 			}
 		}
 
+		/// <summary>
+		/// TODO: fix!!!
+		/// </summary>
+		/// <param name="registerModel"></param>
+		/// <returns></returns>
 		public async Task<bool> RegisterUserAsync(RegisterUserModel registerModel)
 		{
 			var client = Mvx.Resolve<IMobileServiceClient>();
@@ -72,6 +77,18 @@ namespace BloodApp.Core.Services
 		{
 			var settings = Mvx.Resolve<ISettings>();
 			return settings.Get<string>("userId");
+		}
+
+
+		public async Task<bool> CheckForValidTokenAsync()
+		{
+			var client = Mvx.Resolve<IMobileServiceClient>();
+			try {
+				await client.GetTable<BloodDonation>().Take(1).ToListAsync();
+				return true;
+			} catch (Exception) {
+				return false;
+			}
 		}
 	}
 }

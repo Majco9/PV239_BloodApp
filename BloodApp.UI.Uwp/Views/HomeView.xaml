@@ -337,13 +337,13 @@
 
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 		<ScrollViewer Grid.Row="0" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
-			<Pivot Style="{StaticResource TabsStylePivotStyle}">
+			<Pivot x:Name="PagePivot" Style="{StaticResource TabsStylePivotStyle}">
 				<PivotItem DataContext="{Binding BloodDonationListViewModel}">
 					<PivotItem.Header>
 						<local:TabHeader Label="Donations" Glyph="&#xEA37;"/>
 					</PivotItem.Header>
 
-					<ListView ItemsSource="{Binding DonationsCollection}">
+					<ListView ItemsSource="{Binding DonationsCollection}" SelectedItem="{Binding SelectedBloodDonation, Mode=TwoWay}">
 						<ListView.ItemTemplate>
 							<DataTemplate>
 								<StackPanel>
@@ -373,6 +373,11 @@
 				</PivotItem>
 			</Pivot>
 		</ScrollViewer>
+
+		<CommandBar VerticalAlignment="Bottom" >
+			<AppBarButton Icon="Add" Label="Add"></AppBarButton>
+			<AppBarButton Icon="Filter" Label="Filter"></AppBarButton>
+		</CommandBar>
 	</Grid>
 </local:BaseWinPage>
 

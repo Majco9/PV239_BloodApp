@@ -27,6 +27,19 @@ namespace BloodApp.Core.ViewModels
 			}
 		}
 
+		private BloodDonationListItemViewModel _selectedBloodDonation;
+
+		public BloodDonationListItemViewModel SelectedBloodDonation
+		{
+			get { return this._selectedBloodDonation; }
+			set
+			{
+				this._selectedBloodDonation = value;
+				this.ShowViewModel<BloodDonationDetailViewModel>(new { id = this._selectedBloodDonation.Id });
+			}
+		}
+
+
 		public BloodDonationListViewModel()
 		{
 			this._eventService = new Lazy<IBloodDonationService>(Mvx.Resolve<IBloodDonationService>);

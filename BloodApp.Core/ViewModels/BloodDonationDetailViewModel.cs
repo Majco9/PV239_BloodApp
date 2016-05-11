@@ -11,14 +11,18 @@ namespace BloodApp.Core.ViewModels
 	public class BloodDonationDetailViewModel : BaseViewModel
 	{
 		private readonly Lazy<IBloodDonationService> _donationService;
-		private readonly string _donationId;
+		private string _donationId;
 
 		private BloodDonation _bloodDonation;
 
-		public BloodDonationDetailViewModel(string donationId)
+		public BloodDonationDetailViewModel()
 		{
-			this._donationId = donationId;
 			this._donationService = new Lazy<IBloodDonationService>(Mvx.Resolve<IBloodDonationService>);
+		}
+
+		public void Init(string id)
+		{
+			this._donationId = id;
 		}
 
 		public BloodDonation BloodDonation
@@ -31,9 +35,18 @@ namespace BloodApp.Core.ViewModels
 			}
 		}
 
+		public override async void Start()
+		{
+			base.Start();
+			await this.LoadData();
+		}
 
 		protected async Task LoadData()
 		{
+			if (string.IsNullOrEmpty(this._donationId)) {
+				return;
+			}
+
 			try {
 				this.BloodDonation = await this._donationService.Value.GetBloodDonationAsync(this._donationId);
 			} catch (ServiceException ex) {

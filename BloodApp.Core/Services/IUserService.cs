@@ -26,5 +26,12 @@ namespace BloodApp.Core.Services
 		/// </summary>
 		/// <returns>user's id, when there isn't logged user retruns null</returns>
 		string GetIdOfLoggedUser();
+
+		/// <summary>
+		/// Checks for valid user token
+		/// </summary>
+		/// <returns><value>true</value> if user's token is valid, otherwise returns <value>false</value></returns>
+		Task<bool> CheckForValidTokenAsync();
+
 	}
 }
