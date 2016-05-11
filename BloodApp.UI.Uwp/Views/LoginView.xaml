@@ -26,6 +26,12 @@
 					RelativePanel.Below="PasswordTextBox"
 					RelativePanel.AlignHorizontalCenterWithPanel="True"
 					Command="{Binding LoginCommand}"/>
+			
+			<Button x:Name="RegisterBtn"
+					Content="Register" Command="{Binding GoToRegisterCommand}" 
+					RelativePanel.Below="PasswordTextBox"
+					RelativePanel.RightOf="LogInBtn"
+					RelativePanel.AlignHorizontalCenterWithPanel="True"/>
 
 
 		</RelativePanel>

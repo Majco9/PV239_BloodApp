@@ -2,7 +2,7 @@
 
 namespace BloodApp.Core.ViewModels
 {
-	public class HomeViewModel : MvxViewModel
+	public class HomeViewModel : BaseViewModel
 	{
 		public HomeViewModel()
 		{

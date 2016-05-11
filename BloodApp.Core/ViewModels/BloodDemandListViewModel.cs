@@ -10,7 +10,7 @@ using MvvmCross.Platform;
 
 namespace BloodApp.Core.ViewModels
 {
-	public class BloodDemandListViewModel : MvxViewModel
+	public class BloodDemandListViewModel : BaseViewModel
 	{
 		private ObservableCollection<BloodDemandListItemViewModel> _bloodDemands;
 		private readonly Lazy<IBloodDemandService> _demandService;

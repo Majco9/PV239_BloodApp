@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Acr.Settings;
 using BloodApp.Core.Model;
 using BloodApp.Core.Services;
 using MvvmCross.Core.ViewModels;
@@ -8,7 +9,7 @@ using MvvmCross.Platform;
 
 namespace BloodApp.Core.ViewModels
 {
-	public class RegisterViewModel : MvxViewModel
+	public class RegisterViewModel : BaseViewModel
 	{
 		private string _email;
 		private string _confirmPassword;
@@ -37,6 +38,9 @@ namespace BloodApp.Core.ViewModels
 
 							if (registerResult) {
 								//todo: show dialog
+
+								var settings = Mvx.Resolve<ISettings>();
+								settings.Set("NotFirstAppAppRun", true);
 
 								this.ShowViewModel<HomeViewModel>();
 							} else {
@@ -104,7 +108,6 @@ namespace BloodApp.Core.ViewModels
 		{
 			get { return Enum.GetValues(typeof(BloodType)).Cast<BloodType>().ToList(); }
 		}
-
-
+		
 	}
 }

@@ -10,11 +10,7 @@
 
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="10">
 		<StackPanel>
-			<StackPanel.Resources>
-				<Style TargetType="FrameworkElement">
-					<Setter Property="Margin" Value="0,10,0,0"></Setter>
-				</Style>
-			</StackPanel.Resources>
+			 
 			
 			<TextBlock Text="Registration" Style="{StaticResource HeaderTextBlockStyle}" Margin="0,0,0,15"/>
 

@@ -1,4 +1,5 @@
-﻿using BloodApp.Core.Services;
+﻿using Acr.Settings;
+using BloodApp.Core.Services;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 
@@ -71,6 +72,6 @@ namespace BloodApp.Core.ViewModels
 				return this._goToRegisterCommand;
 			}
 		}
-
+		
 	}
 }

@@ -10,7 +10,7 @@ using MvvmCross.Platform;
 
 namespace BloodApp.Core.ViewModels
 {
-	public class BloodDonationListViewModel : MvxViewModel
+	public class BloodDonationListViewModel : BaseViewModel
 	{
 
 		private ObservableCollection<BloodDonationListItemViewModel> _donationsCollection;

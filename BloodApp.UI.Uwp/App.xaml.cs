@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -14,8 +15,10 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using BloodApp.Core.ViewModels;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
+using MvvmCross.WindowsUWP.Views;
 
 namespace BloodApp.UI.Uwp
 {
@@ -67,7 +70,12 @@ namespace BloodApp.UI.Uwp
 
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
-            }
+
+				SystemNavigationManager.GetForCurrentView().BackRequested += (sender, args) =>
+				{
+					BaseViewModel.ActiveViewModel.BackCommand.Execute();
+				};
+			}
 
             if (rootFrame.Content == null)
             {
@@ -81,7 +89,12 @@ namespace BloodApp.UI.Uwp
             Window.Current.Activate();
         }
 
-        /// <summary>
+	    private void OnBackRequested(object sender, BackRequestedEventArgs e)
+	    {
+		    
+	    }
+
+	    /// <summary>
         /// Invoked when Navigation to a certain page fails
         /// </summary>
         /// <param name="sender">The Frame which failed navigation</param>

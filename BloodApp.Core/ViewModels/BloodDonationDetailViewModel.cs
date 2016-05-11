@@ -8,7 +8,7 @@ using MvvmCross.Platform;
 
 namespace BloodApp.Core.ViewModels
 {
-	public class BloodDonationDetailViewModel : MvxViewModel
+	public class BloodDonationDetailViewModel : BaseViewModel
 	{
 		private readonly Lazy<IBloodDonationService> _donationService;
 		private readonly string _donationId;

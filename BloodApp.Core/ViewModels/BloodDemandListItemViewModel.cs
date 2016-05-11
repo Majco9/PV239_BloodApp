@@ -4,7 +4,7 @@ using MvvmCross.Core.ViewModels;
 
 namespace BloodApp.Core.ViewModels
 {
-	public class BloodDemandListItemViewModel : MvxViewModel
+	public class BloodDemandListItemViewModel : BaseViewModel
 	{
 		private readonly BloodDemand _bloodDemand;
 
