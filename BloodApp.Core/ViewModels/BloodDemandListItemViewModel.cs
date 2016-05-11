@@ -1,4 +1,5 @@
 ﻿using BloodApp.Core.Model;
+using BloodApp.Core.Model.Util;
 using MvvmCross.Core.ViewModels;
 
 namespace BloodApp.Core.ViewModels
@@ -12,7 +13,9 @@ namespace BloodApp.Core.ViewModels
 			this._bloodDemand = bloodDemand;
 		}
 
-		public string Created => this._bloodDemand.CreatedAt.ToString("f");
+		public string Created => this._bloodDemand?.CreatedAt.ToString("D");
+
+		public string Title => $"{this._bloodDemand?.BloodGroup.GetBloodTypeFriendyName()} - Žiadosť o krv";
 
 	}
 }

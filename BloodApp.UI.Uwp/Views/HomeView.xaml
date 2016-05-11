@@ -337,10 +337,10 @@
 
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 		<ScrollViewer Grid.Row="0" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
-			<Pivot Style="{StaticResource TabsStylePivotStyle}" DataContext="{Binding BloodDonationListViewModel}">
-				<PivotItem>
+			<Pivot Style="{StaticResource TabsStylePivotStyle}">
+				<PivotItem DataContext="{Binding BloodDonationListViewModel}">
 					<PivotItem.Header>
-						<local:TabHeader Label="List" Glyph="&#xEA37;"/>
+						<local:TabHeader Label="Donations" Glyph="&#xEA37;"/>
 					</PivotItem.Header>
 
 					<ListView ItemsSource="{Binding DonationsCollection}">
@@ -354,11 +354,22 @@
 						</ListView.ItemTemplate>
 					</ListView>
 				</PivotItem>
-				<PivotItem>
+				<PivotItem DataContext="{Binding BloodDemandListViewModel}">
 					<PivotItem.Header>
-						<local:TabHeader Label="Settings" Glyph="&#xE713;"/>
+						<local:TabHeader Label="Demands" Glyph="&#xE713;"/>
 					</PivotItem.Header>
-					<TextBlock Text="Settings"></TextBlock>
+
+					<ListView ItemsSource="{Binding BloodDemands}">
+						<ListView.ItemTemplate>
+							<DataTemplate>
+								<StackPanel>
+									<TextBlock Text="{Binding Title}" Style="{StaticResource BodyTextBlockStyle}" />
+									<TextBlock Text="{Binding Created}" Style="{StaticResource CaptionTextBlockStyle}" />
+								</StackPanel>
+							</DataTemplate>
+						</ListView.ItemTemplate>
+					</ListView>
+
 				</PivotItem>
 			</Pivot>
 		</ScrollViewer>

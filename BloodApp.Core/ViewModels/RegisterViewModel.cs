@@ -1,4 +1,7 @@
-﻿using BloodApp.Core.Model;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using BloodApp.Core.Model;
 using BloodApp.Core.Services;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
@@ -8,7 +11,7 @@ namespace BloodApp.Core.ViewModels
 	public class RegisterViewModel : MvxViewModel
 	{
 		private string _email;
-		private string _name;
+		private string _confirmPassword;
 		private BloodType? _bloodGroup;
 		private string _password;
 		private IMvxCommand _registerCommand;
@@ -21,22 +24,26 @@ namespace BloodApp.Core.ViewModels
 				{
 					this._registerCommand = new MvxCommand(async () =>
 					{
-						var user = new User
-						{
-							Email = this.Email,
-							Name = this.Name,
-							BloodGroup = this.BloodGroup
-						};
+						if (this.ValidForm()) {
 
-						var registerResult = await Mvx.Resolve<IUserService>().RegisterUserAsync(user, this.Password);
+							var user = new User
+							{
+								Email = this.Email,
+								//Name = this.Name,
+								BloodGroup = this.BloodGroup
+							};
 
-						if (registerResult)
-						{
-							//todo: show dialog
+							var registerResult = await Mvx.Resolve<IUserService>().RegisterUserAsync(user, this.Password);
 
-							this.ShowViewModel<BloodDonationListViewModel>();
+							if (registerResult) {
+								//todo: show dialog
+
+								this.ShowViewModel<BloodDonationListViewModel>();
+							} else {
+								//todo: show error dialog
+							}
 						} else {
-							//todo: show error dialog
+							// totod: show error dialog
 						}
 
 					});
@@ -44,6 +51,12 @@ namespace BloodApp.Core.ViewModels
 
 				return this._registerCommand;
 			}
+		}
+
+		private bool ValidForm()
+		{
+			return !string.IsNullOrEmpty(this.Email) && !string.IsNullOrEmpty(this.Password) && this.BloodGroup != null &&
+					this.Password.Equals(this.ConfirmPassword);
 		}
 
 		public string Email
@@ -55,16 +68,7 @@ namespace BloodApp.Core.ViewModels
 				this.RaisePropertyChanged();
 			}
 		}
-
-		public string Name
-		{
-			get { return this._name; }
-			set
-			{
-				this._name = value;
-				this.RaisePropertyChanged();
-			}
-		}
+		
 
 		public BloodType? BloodGroup
 		{
@@ -84,6 +88,21 @@ namespace BloodApp.Core.ViewModels
 				this._password = value;
 				this.RaisePropertyChanged();
 			}
+		}
+
+		public string ConfirmPassword
+		{
+			get { return this._confirmPassword; }
+			set
+			{
+				this._confirmPassword = value;
+				this.RaisePropertyChanged();
+			}
+		}
+
+		public List<BloodType> BloodTypes
+		{
+			get { return Enum.GetValues(typeof(BloodType)).Cast<BloodType>().ToList(); }
 		}
 
 

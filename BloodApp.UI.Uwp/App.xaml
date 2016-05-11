@@ -5,4 +5,12 @@
     xmlns:local="using:BloodApp.UI.Uwp"
     RequestedTheme="Light">
 
+	<Application.Resources>
+		<ResourceDictionary>
+			<Style x:Key="FormTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BodyTextBlockStyle}">
+				
+			</Style>
+		</ResourceDictionary>
+	</Application.Resources>
+	
 </Application>

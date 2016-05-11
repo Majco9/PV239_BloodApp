@@ -18,8 +18,8 @@
 			<TextBox x:Name="EmailTextBox" Width="250" PlaceholderText="Email" 
 					 TextWrapping="Wrap" Text="{Binding Email, Mode=TwoWay}" 
 					 RelativePanel.AlignHorizontalCenterWithPanel="True" />
-			<TextBox x:Name="PasswordTextBox" Width="250" PlaceholderText="Heslo" Margin="15"
-					 TextWrapping="Wrap" Text="{Binding Password, Mode=TwoWay}" 
+			<PasswordBox x:Name="PasswordTextBox" Width="250" PlaceholderText="Heslo" Margin="15"
+					 Password="{Binding Password, Mode=TwoWay}" 
 					 RelativePanel.AlignHorizontalCenterWithPanel="True"
 					 RelativePanel.Below="EmailTextBox"/>
 			<Button x:Name="LogInBtn" Content="Log In" Width="100"

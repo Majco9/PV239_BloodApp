@@ -18,7 +18,7 @@ namespace BloodApp.Core
 			Mvx.RegisterType<IBloodDemandService, BloodDemandService>();
 			Mvx.RegisterType<IUserService, UserService>();
 
-			Mvx.RegisterSingleton<IMvxAppStart>(new MvxAppStart<LoginViewModel>());
+			Mvx.RegisterSingleton<IMvxAppStart>(new MvxAppStart<RegisterViewModel>());
 
 			var client = new MobileServiceClient(new Uri(App.ServerUri));
 			Mvx.RegisterSingleton<IMobileServiceClient>(client);
