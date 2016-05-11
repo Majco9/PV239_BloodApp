@@ -45,6 +45,7 @@
     <Compile Include="Model\Login\LoginResult.cs" />
     <Compile Include="Model\Login\LoginResultUser.cs" />
     <Compile Include="Model\Login\LoginUserModel.cs" />
+    <Compile Include="Model\Register\RegisterUserModel.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\Util\ExtensionMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -23,6 +23,8 @@ namespace BloodApp.UI.Uwp.Views
 	/// </summary>
 	public sealed partial class HomeView : BaseWinPage
 	{
+		protected override bool ForceHideBackButton { get { return true; } }
+
 		public HomeView()
 		{
 			this.InitializeComponent();

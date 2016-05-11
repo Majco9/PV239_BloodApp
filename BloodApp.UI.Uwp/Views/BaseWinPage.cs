@@ -7,7 +7,11 @@ namespace BloodApp.UI.Uwp.Views
 {
 	public class BaseWinPage : MvxWindowsPage
 	{
-		protected BaseWinPage() { }
+		protected virtual bool ForceHideBackButton { get; set; }
+
+		protected BaseWinPage()
+		{
+		}
 
 		protected override void OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs e)
 		{
@@ -15,7 +19,7 @@ namespace BloodApp.UI.Uwp.Views
 
 			Frame rootFrame = Window.Current.Content as Frame;
 
-			if (rootFrame != null && rootFrame.CanGoBack) {
+			if (rootFrame != null && rootFrame.CanGoBack && !this.ForceHideBackButton) {
 				SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
 			} else {
 				SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;

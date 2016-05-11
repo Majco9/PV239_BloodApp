@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Acr.Settings;
 using BloodApp.Core.Model;
+using BloodApp.Core.Model.Register;
 using BloodApp.Core.Services;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
@@ -12,6 +13,7 @@ namespace BloodApp.Core.ViewModels
 	public class RegisterViewModel : BaseViewModel
 	{
 		private string _email;
+		private string _name;
 		private string _confirmPassword;
 		private BloodType? _bloodGroup;
 		private string _password;
@@ -21,20 +23,22 @@ namespace BloodApp.Core.ViewModels
 		{
 			get
 			{
-				if (this._registerCommand == null)
-				{
+				if (this._registerCommand == null) {
 					this._registerCommand = new MvxCommand(async () =>
 					{
 						if (this.ValidForm()) {
 
-							var user = new User
+							var registration = new RegisterUserModel
 							{
-								Email = this.Email,
-								//Name = this.Name,
-								BloodGroup = this.BloodGroup
+								// ReSharper disable once PossibleInvalidOperationException
+								BloodGroup = this.BloodGroup.Value,
+								Password = this.Password,
+								PasswordVerify = this.ConfirmPassword,
+								Email = this.Email
 							};
 
-							var registerResult = await Mvx.Resolve<IUserService>().RegisterUserAsync(user, this.Password);
+							var userService = Mvx.Resolve<IUserService>();
+							var registerResult = await userService.RegisterUserAsync(registration);
 
 							if (registerResult) {
 								//todo: show dialog
@@ -42,6 +46,7 @@ namespace BloodApp.Core.ViewModels
 								var settings = Mvx.Resolve<ISettings>();
 								settings.Set("NotFirstAppAppRun", true);
 
+								await userService.AuthenticateAsync(this.Email, this.Password);
 								this.ShowViewModel<HomeViewModel>();
 							} else {
 								//todo: show error dialog
@@ -72,7 +77,16 @@ namespace BloodApp.Core.ViewModels
 				this.RaisePropertyChanged();
 			}
 		}
-		
+
+		public string Name
+		{
+			get { return this._name; }
+			set
+			{
+				this._name = value;
+				this.RaisePropertyChanged();
+			}
+		}
 
 		public BloodType? BloodGroup
 		{
@@ -108,6 +122,6 @@ namespace BloodApp.Core.ViewModels
 		{
 			get { return Enum.GetValues(typeof(BloodType)).Cast<BloodType>().ToList(); }
 		}
-		
+
 	}
 }

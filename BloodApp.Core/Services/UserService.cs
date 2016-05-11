@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Acr.Settings;
 using BloodApp.Core.Model;
 using BloodApp.Core.Model.Login;
+using BloodApp.Core.Model.Register;
 using Microsoft.WindowsAzure.MobileServices;
 using MvvmCross.Platform;
 using Newtonsoft.Json;
@@ -52,9 +53,19 @@ namespace BloodApp.Core.Services
 			}
 		}
 
-		public Task<bool> RegisterUserAsync(User user, string password)
+		public async Task<bool> RegisterUserAsync(RegisterUserModel registerModel)
 		{
-			throw new NotImplementedException();
+			var client = Mvx.Resolve<IMobileServiceClient>();
+			try {
+				var tmp = await client.InvokeApiAsync("auth/register", JsonConvert.SerializeObject(registerModel), HttpMethod.Post, null);
+
+				return true;
+			} catch (Exception ex) {
+				Debug.WriteLine("Zlyhala registracia uzivale, chyba: {0}", ex.Message);
+				return false;
+			}
+
+
 		}
 
 		public string GetIdOfLoggedUser()

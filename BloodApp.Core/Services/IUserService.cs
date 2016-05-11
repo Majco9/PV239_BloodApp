@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using BloodApp.Core.Model;
+using BloodApp.Core.Model.Register;
 
 namespace BloodApp.Core.Services
 {
@@ -16,10 +17,9 @@ namespace BloodApp.Core.Services
 		/// <summary>
 		/// Try register new user
 		/// </summary>
-		/// <param name="user">user</param>
-		/// <param name="password">user's password</param>
+		/// <param name="registerModel"></param>
 		/// <returns><value>true</value> if register was succesfull, otherwise returns <value>false</value></returns>
-		Task<bool> RegisterUserAsync(User user, string password);
+		Task<bool> RegisterUserAsync(RegisterUserModel registerModel);
 
 		/// <summary>
 		/// Returns logged in user's id

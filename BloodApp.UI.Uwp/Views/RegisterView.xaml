@@ -18,6 +18,10 @@
 				   Style="{StaticResource BodyTextBlockStyle}"/>
 			<TextBox Text="{Binding Email, Mode=TwoWay}" PlaceholderText="Type your email here" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></TextBox>
 
+			<TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="Name" Margin="0,15,0,0"
+				   Style="{StaticResource BodyTextBlockStyle}"/>
+			<TextBox Text="{Binding Name, Mode=TwoWay}" PlaceholderText="Type your name here" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></TextBox>
+			
 			<TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="Password" Margin="0,15,0,0"
 				   Style="{StaticResource BodyTextBlockStyle}"/>
 			<PasswordBox Password="{Binding Password, Mode=TwoWay}" PlaceholderText="Type your password here" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></PasswordBox>
