@@ -1,4 +1,4 @@
-﻿<views:MvxWindowsPage
+﻿<local:BaseWinPage
     x:Class="BloodApp.UI.Uwp.Views.LoginView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -36,5 +36,5 @@
 
 		</RelativePanel>
 	</Grid>
-</views:MvxWindowsPage>
+</local:BaseWinPage>
 

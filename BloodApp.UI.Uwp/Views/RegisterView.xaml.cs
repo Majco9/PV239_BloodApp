@@ -26,24 +26,13 @@ namespace BloodApp.UI.Uwp.Views
 	/// <summary>
 	/// An empty page that can be used on its own or navigated to within a Frame.
 	/// </summary>
-	public sealed partial class RegisterView : MvxWindowsPage
+	public sealed partial class RegisterView : BaseWinPage
 	{
 		public RegisterView()
 		{
 			this.InitializeComponent();
 		}
 
-		protected override void OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs e)
-		{
-			base.OnNavigatedTo(e);
-
-			Frame rootFrame = Window.Current.Content as Frame;
-
-			if (rootFrame != null && rootFrame.CanGoBack) {
-				SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
-			} else {
-				SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
-			}
-		}
+		
 	}
 }

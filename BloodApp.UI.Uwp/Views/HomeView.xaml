@@ -1,4 +1,4 @@
-﻿<views:MvxWindowsPage
+﻿<local:BaseWinPage
     x:Class="BloodApp.UI.Uwp.Views.HomeView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -374,5 +374,5 @@
 			</Pivot>
 		</ScrollViewer>
 	</Grid>
-</views:MvxWindowsPage>
+</local:BaseWinPage>
 
