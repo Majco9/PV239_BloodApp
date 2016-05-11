@@ -13,6 +13,8 @@ namespace BloodApp.Core.ViewModels
 			this._bloodDemand = bloodDemand;
 		}
 
+		public BloodDemand BloodDemand => this._bloodDemand;
+
 		public string Created => this._bloodDemand?.CreatedAt.ToString("D");
 
 		public string Title => $"{this._bloodDemand?.BloodGroup.GetBloodTypeFriendyName()} - Žiadosť o krv";

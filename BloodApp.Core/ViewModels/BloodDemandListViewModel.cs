@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -28,6 +29,17 @@ namespace BloodApp.Core.ViewModels
 			{
 				this._bloodDemands = value;
 				this.RaisePropertyChanged();
+			}
+		}
+
+		private BloodDemandListItemViewModel _selectedBloodDemand;
+		public BloodDemandListItemViewModel SelectedBloodDemand
+		{
+			get { return this._selectedBloodDemand; }
+			set
+			{
+				this._selectedBloodDemand = value;
+				this.ShowViewModel<BloodDemandDetailViewModel>(new MvxBundle(new Dictionary<string, string> { { "id", this._selectedBloodDemand.BloodDemand?.Id } }));
 			}
 		}
 

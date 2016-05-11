@@ -359,7 +359,7 @@
 						<local:TabHeader Label="Demands" Glyph="&#xE713;"/>
 					</PivotItem.Header>
 
-					<ListView ItemsSource="{Binding BloodDemands}">
+					<ListView ItemsSource="{Binding BloodDemands}" SelectedItem="{Binding SelectedBloodDemand, Mode=TwoWay}">
 						<ListView.ItemTemplate>
 							<DataTemplate>
 								<StackPanel>

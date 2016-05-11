@@ -11,19 +11,29 @@ namespace BloodApp.Core.ViewModels
 	public class BloodDemandDetailViewModel : BaseViewModel
 	{
 		private readonly Lazy<IBloodDemandService> _bloodDemandrService;
-		private readonly string _bloodDemandId;
+		private string _bloodDemandId;
 
 		private BloodDemand _bloodDemand;
 
-		public BloodDemandDetailViewModel(string id)
+		public BloodDemandDetailViewModel()
+		{
+			this._bloodDemandrService = new Lazy<IBloodDemandService>(Mvx.Resolve<IBloodDemandService>);
+		}
+
+		public void Init(string id)
 		{
 			this._bloodDemandId = id;
-			this._bloodDemandrService = new Lazy<IBloodDemandService>(Mvx.Resolve<IBloodDemandService>);
+		}
+
+		public override async void Start()
+		{
+			base.Start();
+			await this.LoadData();
 		}
 
 		protected async Task LoadData()
 		{
-			if (!string.IsNullOrEmpty(this._bloodDemandId)) {
+			if (string.IsNullOrEmpty(this._bloodDemandId)) {
 				return;
 			}
 
