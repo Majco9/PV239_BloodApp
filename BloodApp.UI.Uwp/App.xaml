@@ -3,14 +3,18 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:BloodApp.UI.Uwp"
+    xmlns:system="using:System"
     RequestedTheme="Light">
 
 	<Application.Resources>
 		<ResourceDictionary>
-			<Style x:Key="FormTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BodyTextBlockStyle}">
-				
-			</Style>
+			<ResourceDictionary.ThemeDictionaries>
+				<ResourceDictionary x:Key="Default">
+					<SolidColorBrush x:Key="SystemControlHighlightAccentBrush" Color="DarkRed"/>
+					<SolidColorBrush x:Key="SystemControlHighlightChromeAltLowBrush" Color="IndianRed"/>
+				</ResourceDictionary>
+			</ResourceDictionary.ThemeDictionaries>
 		</ResourceDictionary>
 	</Application.Resources>
-	
+
 </Application>
