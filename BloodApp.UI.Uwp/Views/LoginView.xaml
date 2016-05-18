@@ -22,16 +22,15 @@
 					 Password="{Binding Password, Mode=TwoWay}" 
 					 RelativePanel.AlignHorizontalCenterWithPanel="True"
 					 RelativePanel.Below="EmailTextBox"/>
-			<Button x:Name="LogInBtn" Content="Log In" Width="100"
+			<StackPanel Orientation="Horizontal" 
 					RelativePanel.Below="PasswordTextBox"
-					RelativePanel.AlignHorizontalCenterWithPanel="True"
+					RelativePanel.AlignHorizontalCenterWithPanel="True">
+				<Button x:Name="LogInBtn" Content="Log In" Width="100" Margin="0,0,5,0"
 					Command="{Binding LoginCommand}"/>
+				<Button x:Name="RegisterBtn" Width="100" Margin="5,0,0,0"
+					Content="Register" Command="{Binding GoToRegisterCommand}" />
+			</StackPanel>
 			
-			<Button x:Name="RegisterBtn"
-					Content="Register" Command="{Binding GoToRegisterCommand}" 
-					RelativePanel.Below="PasswordTextBox"
-					RelativePanel.RightOf="LogInBtn"
-					RelativePanel.AlignHorizontalCenterWithPanel="True"/>
 
 
 		</RelativePanel>
