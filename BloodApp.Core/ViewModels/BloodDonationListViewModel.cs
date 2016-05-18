@@ -49,6 +49,7 @@ namespace BloodApp.Core.ViewModels
 
 		protected async Task LoadData()
 		{
+			this.IsLoading = true;
 			try {
 				var events = await this._eventService.Value.ListAllBloodDonationsAsync();
 				this.DonationsCollection = new ObservableCollection<BloodDonationListItemViewModel>(events
@@ -57,6 +58,7 @@ namespace BloodApp.Core.ViewModels
 				//todo: handle it (some toast)
 				Debug.WriteLine("Error while loading data..message: {0}", ex.Message);
 			}
+			this.IsLoading = false;
 		}
 
 		public override async void Start()

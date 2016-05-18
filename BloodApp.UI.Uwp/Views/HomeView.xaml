@@ -19,7 +19,6 @@
                             Background="{TemplateBinding Background}">
 							<Grid.Resources>
 
-
 								<Style x:Key="BaseContentControlStyle" TargetType="ContentControl">
 									<Setter Property="FontFamily" Value="Segoe UI" />
 									<Setter Property="FontWeight" Value="SemiBold" />
@@ -342,34 +341,38 @@
 					<PivotItem.Header>
 						<local:TabHeader Label="Donations" Glyph="&#xEA37;"/>
 					</PivotItem.Header>
-
-					<ListView ItemsSource="{Binding DonationsCollection}" SelectedItem="{Binding SelectedBloodDonation, Mode=TwoWay}">
-						<ListView.ItemTemplate>
-							<DataTemplate>
-								<StackPanel>
-									<TextBlock Text="{Binding Name}" Style="{StaticResource BodyTextBlockStyle}" />
-									<TextBlock Text="{Binding Date}" Style="{StaticResource CaptionTextBlockStyle}" />
-								</StackPanel>
-							</DataTemplate>
-						</ListView.ItemTemplate>
-					</ListView>
+					<StackPanel>
+						<ProgressBar VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}"/>
+						<ListView ItemsSource="{Binding DonationsCollection}" SelectedItem="{Binding SelectedBloodDonation, Mode=TwoWay}">
+							<ListView.ItemTemplate>
+								<DataTemplate>
+									<StackPanel>
+										<TextBlock Text="{Binding Name}" Style="{StaticResource BodyTextBlockStyle}" />
+										<TextBlock Text="{Binding Date}" Style="{StaticResource CaptionTextBlockStyle}" />
+									</StackPanel>
+								</DataTemplate>
+							</ListView.ItemTemplate>
+						</ListView>
+					</StackPanel>
 				</PivotItem>
 				<PivotItem DataContext="{Binding BloodDemandListViewModel}">
 					<PivotItem.Header>
 						<local:TabHeader Label="Demands" Glyph="&#xE713;"/>
 					</PivotItem.Header>
+					<StackPanel>
+						<ProgressBar VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}"/>
 
-					<ListView ItemsSource="{Binding BloodDemands}" SelectedItem="{Binding SelectedBloodDemand, Mode=TwoWay}">
-						<ListView.ItemTemplate>
-							<DataTemplate>
-								<StackPanel>
-									<TextBlock Text="{Binding Title}" Style="{StaticResource BodyTextBlockStyle}" />
-									<TextBlock Text="{Binding Created}" Style="{StaticResource CaptionTextBlockStyle}" />
-								</StackPanel>
-							</DataTemplate>
-						</ListView.ItemTemplate>
-					</ListView>
-
+						<ListView ItemsSource="{Binding BloodDemands}" SelectedItem="{Binding SelectedBloodDemand, Mode=TwoWay}">
+							<ListView.ItemTemplate>
+								<DataTemplate>
+									<StackPanel>
+										<TextBlock Text="{Binding Title}" Style="{StaticResource BodyTextBlockStyle}" />
+										<TextBlock Text="{Binding Created}" Style="{StaticResource CaptionTextBlockStyle}" />
+									</StackPanel>
+								</DataTemplate>
+							</ListView.ItemTemplate>
+						</ListView>
+					</StackPanel>
 				</PivotItem>
 			</Pivot>
 		</ScrollViewer>

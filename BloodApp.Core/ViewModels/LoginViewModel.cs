@@ -1,11 +1,12 @@
 ﻿using Acr.Settings;
+using Acr.UserDialogs;
 using BloodApp.Core.Services;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 
 namespace BloodApp.Core.ViewModels
 {
-	public class LoginViewModel : MvxViewModel
+	public class LoginViewModel : BaseViewModel
 	{
 		private string _email;
 
@@ -44,13 +45,23 @@ namespace BloodApp.Core.ViewModels
 				if (this._loginCommand == null) {
 					this._loginCommand = new MvxCommand(async () =>
 					{
+						this.IsLoading = true;
+						var userDialogs = Mvx.Resolve<IUserDialogs>();
+
 						var loginService = Mvx.Resolve<IUserService>();
 						var loginResult = await loginService.AuthenticateAsync(this._email, this._password);
 						if (loginResult) {
 							this.ShowViewModel<HomeViewModel>();
 						} else {
 							//todo: show dialog with error
+							var alertConfig = new AlertConfig
+							{
+								Title = "Chyba",
+								Message = "Prihlasenie bolo neuspesne!"
+							};
+							userDialogs.Alert(alertConfig);
 						}
+						this.IsLoading = false;
 					});
 				}
 

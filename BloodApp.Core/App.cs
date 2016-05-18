@@ -1,4 +1,5 @@
 ﻿using System;
+using Acr.UserDialogs;
 using BloodApp.Core.Services;
 using BloodApp.Core.ViewModels;
 using Microsoft.WindowsAzure.MobileServices;
@@ -22,6 +23,7 @@ namespace BloodApp.Core
 
 			var client = new MobileServiceClient(new Uri(App.ServerUri));
 			Mvx.RegisterSingleton<IMobileServiceClient>(client);
+			Mvx.RegisterSingleton<IUserDialogs>(() => UserDialogs.Instance);
 
 		}
 	}

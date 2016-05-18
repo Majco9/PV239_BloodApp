@@ -20,5 +20,10 @@ namespace BloodApp.Core.ViewModels
 			this.BloodDonationListViewModel.Start();
 			this.BloodDemandListViewModel.Start();
 		}
+
+		public override bool IsLoading
+		{
+			get { return this.BloodDemandListViewModel.IsLoading || this.BloodDonationListViewModel.IsLoading; }
+		}
 	}
 }

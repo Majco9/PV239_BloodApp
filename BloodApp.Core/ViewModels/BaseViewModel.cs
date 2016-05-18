@@ -7,6 +7,7 @@ namespace BloodApp.Core.ViewModels
 
 		public static BaseViewModel ActiveViewModel;
 		private IMvxCommand _backCommand;
+		private bool _isLoading;
 
 		public IMvxCommand BackCommand
 		{
@@ -19,6 +20,16 @@ namespace BloodApp.Core.ViewModels
 					});
 				}
 				return this._backCommand;
+			}
+		}
+
+		public virtual bool IsLoading
+		{
+			get { return this._isLoading; }
+			set
+			{
+				this._isLoading = value;
+				this.RaisePropertyChanged();
 			}
 		}
 

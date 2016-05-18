@@ -47,6 +47,7 @@ namespace BloodApp.Core.ViewModels
 
 		protected async Task LoadData()
 		{
+			this.IsLoading = true;
 			try {
 				var demands = await this._demandService.Value.ListAllBloodDemandsAsync();
 				this.BloodDemands = new ObservableCollection<BloodDemandListItemViewModel>(demands
@@ -54,6 +55,7 @@ namespace BloodApp.Core.ViewModels
 			} catch (ServiceException ex) {
 				// todo: handle it
 			}
+			this.IsLoading = false;
 		}
 
 		public override async void Start()

@@ -8,11 +8,14 @@
     xmlns:views="using:MvvmCross.WindowsUWP.Views"
     mc:Ignorable="d">
 
+
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="2.5*"/>
 			<RowDefinition Height="2*"/>
 		</Grid.RowDefinitions>
+		<ProgressBar VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}"/>
+		
 		<RelativePanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="15">
 			
 			<TextBox x:Name="EmailTextBox" Width="250" PlaceholderText="Email" 

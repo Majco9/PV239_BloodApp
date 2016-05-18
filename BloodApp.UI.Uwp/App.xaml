@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:BloodApp.UI.Uwp"
     xmlns:system="using:System"
+    xmlns:converters="using:BloodApp.UI.Uwp.Converters"
     RequestedTheme="Light">
 
 	<Application.Resources>
@@ -14,6 +15,9 @@
 					<SolidColorBrush x:Key="SystemControlHighlightChromeAltLowBrush" Color="IndianRed"/>
 				</ResourceDictionary>
 			</ResourceDictionary.ThemeDictionaries>
+			
+			<converters:BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+			
 		</ResourceDictionary>
 	</Application.Resources>
 
