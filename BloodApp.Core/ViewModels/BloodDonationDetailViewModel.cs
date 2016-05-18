@@ -70,5 +70,14 @@ namespace BloodApp.Core.ViewModels
 				return string.Empty;
 			}
 		}
+
+		public bool IsUserOwner
+		{
+			get
+			{
+				var userService = Mvx.Resolve<IUserService>();
+				return this.BloodDonation?.DonorId == userService.GetIdOfLoggedUser();
+			}
+		}
 	}
 }

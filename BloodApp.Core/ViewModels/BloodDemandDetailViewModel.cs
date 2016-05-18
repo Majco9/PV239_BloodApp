@@ -59,7 +59,28 @@ namespace BloodApp.Core.ViewModels
 
 		public string Instructions => this._bloodDemand?.Instructions;
 
-		public BloodType? BloodGroup => this._bloodDemand.BloodGroup;
+		public BloodType? BloodGroup => this._bloodDemand?.BloodGroup;
+
+		public string Date
+		{
+			get
+			{
+				if (this._bloodDemand?.CreatedAt != null) {
+					return this._bloodDemand.CreatedAt.ToString("f");
+				}
+
+				return string.Empty;
+			}
+		}
+
+		public bool IsUserOwner
+		{
+			get
+			{
+				var userService = Mvx.Resolve<IUserService>();
+				return this.BloodDemand?.PublisherId == userService.GetIdOfLoggedUser();
+			}
+		}
 		
 	}
 }
