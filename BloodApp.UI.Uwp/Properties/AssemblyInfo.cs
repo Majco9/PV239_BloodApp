@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BloodApp.UI.Uwp")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Give Blood")]
+[assembly: AssemblyDescription("App for giving blood")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Mário Kudoláni")]
 [assembly: AssemblyProduct("BloodApp.UI.Uwp")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCopyright("Copyright © Mário Kudolńi 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
