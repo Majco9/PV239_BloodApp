@@ -1,6 +1,7 @@
 ﻿{
   "dependencies": {
     "Acr.MvvmCross.Plugins.Settings": "5.0.0",
+    "Acr.UserDialogs": "5.0.1",
     "Microsoft.Azure.Mobile.Client": "2.0.1",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
     "MvvmCross.Core": "4.1.0",
