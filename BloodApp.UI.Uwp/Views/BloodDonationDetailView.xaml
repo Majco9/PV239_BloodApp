@@ -8,6 +8,30 @@
     mc:Ignorable="d">
 
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-		<TextBlock Text="{Binding Name}" />
+		<ProgressBar VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}"/>
+		<StackPanel Padding="10">
+
+			<TextBlock Text="{Binding Name}" Margin="0,0,0,10" Style="{ThemeResource SubheaderTextBlockStyle}"/>
+			<StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+				<FontIcon Glyph="&#xE716;"/>
+				<TextBlock Text="{Binding OrganizatorName}" Margin="10,0,0,0"></TextBlock>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+				<FontIcon Glyph="&#xE787;"/>
+				<TextBlock Text="{Binding Date}" Margin="10,0,0,0"></TextBlock>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+				<FontIcon Glyph="&#xE1C4;"/>
+				<TextBlock Text="{Binding Address}" Margin="10,0,0,0"></TextBlock>
+			</StackPanel>
+			<TextBlock Margin="0,10,0,0" Text="{Binding Description}" TextWrapping="Wrap" />
+		</StackPanel>
+
+		<CommandBar VerticalAlignment="Bottom" Visibility="{Binding IsUserOwner, Converter={StaticResource BoolToVisibilityConverter}}">
+			<CommandBar.PrimaryCommands>
+				<AppBarButton Icon="Edit" Label="Edit" />
+				<AppBarButton Icon="Delete" Label="Delete" />
+			</CommandBar.PrimaryCommands>
+		</CommandBar>
 	</Grid>
 </local:BaseWinPage>
