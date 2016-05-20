@@ -38,11 +38,13 @@ namespace BloodApp.Core.ViewModels
 			}
 
 			try {
+				this.IsLoading = true;
 				this.BloodDemand = await this._bloodDemandrService.Value.GetBloodDemandAsync(this._bloodDemandId);
 			} catch (ServiceException ex) {
 				// todo: handle it
 			}
-			
+
+			this.IsLoading = false;
 		}
 
 		public BloodDemand BloodDemand

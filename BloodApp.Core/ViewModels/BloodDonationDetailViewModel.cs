@@ -48,10 +48,13 @@ namespace BloodApp.Core.ViewModels
 			}
 
 			try {
+				this.IsLoading = true;
 				this.BloodDonation = await this._donationService.Value.GetBloodDonationAsync(this._donationId);
 			} catch (ServiceException ex) {
 				//todo: handle it
 			}
+
+			this.IsLoading = false;
 		}
 
 		public string Name => this.BloodDonation?.Name;

@@ -5,8 +5,15 @@
     xmlns:local="using:BloodApp.UI.Uwp.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:BloodApp.UI.Uwp.Converters"
     mc:Ignorable="d">
 
+	<Page.Resources>
+		<ResourceDictionary>
+			<converters:BloodTypeToStringConveter x:Key="BloodTypeToStringConveter" />
+		</ResourceDictionary>
+	</Page.Resources>
+	
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 		<ProgressBar VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}"/>
 		<StackPanel Padding="10">
@@ -14,7 +21,7 @@
 			<TextBlock Text="Demand Detail" Margin="0,0,0,10" Style="{ThemeResource SubheaderTextBlockStyle}"/>
 			<StackPanel Orientation="Horizontal" Margin="0,0,0,15">
 				<FontIcon Glyph="&#xE716;"/>
-				<TextBlock Text="{Binding BloodGroup}" Margin="10,0,0,0"></TextBlock>
+				<TextBlock Text="{Binding BloodGroup, Converter={StaticResource BloodTypeToStringConveter}}" Margin="10,0,0,0"></TextBlock>
 			</StackPanel>
 			<StackPanel Orientation="Horizontal" Margin="0,0,0,15">
 				<FontIcon Glyph="&#xE787;"/>
