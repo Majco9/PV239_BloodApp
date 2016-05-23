@@ -378,7 +378,14 @@
 		</ScrollViewer>
 
 		<CommandBar VerticalAlignment="Bottom" >
-			<AppBarButton Icon="Add" Label="Add"></AppBarButton>
+			<AppBarButton Icon="Add" Label="Add">
+				<AppBarButton.Flyout>
+					<MenuFlyout>
+						<MenuFlyoutItem Text="Add Blood Donation" Command="{Binding GoToAddDonationCommand}" />
+						<MenuFlyoutItem Text="Add Blood Demand" Command="{Binding GoToAddDemandCommand}" />
+					</MenuFlyout>
+				</AppBarButton.Flyout>
+			</AppBarButton>
 			<AppBarButton Icon="Filter" Label="Filter"></AppBarButton>
 		</CommandBar>
 	</Grid>
