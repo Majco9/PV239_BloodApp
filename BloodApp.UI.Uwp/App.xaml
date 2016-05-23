@@ -12,7 +12,8 @@
 			<ResourceDictionary.ThemeDictionaries>
 				<ResourceDictionary x:Key="Default">
 					<SolidColorBrush x:Key="SystemControlHighlightAccentBrush" Color="DarkRed"/>
-					<SolidColorBrush x:Key="SystemControlHighlightChromeAltLowBrush" Color="IndianRed"/>
+					<!--<SolidColorBrush x:Key="SystemControlHighlightChromeAltLowBrush" Color="IndianRed"/>-->
+					<SolidColorBrush x:Key="SystemControlHighlightChromeAltLowBrush" Color="DarkGray"/>
 				</ResourceDictionary>
 			</ResourceDictionary.ThemeDictionaries>
 			
