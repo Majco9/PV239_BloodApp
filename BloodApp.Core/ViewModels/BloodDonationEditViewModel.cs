@@ -16,6 +16,8 @@ namespace BloodApp.Core.ViewModels
 
 		private BloodDonation _bloodDonation;
 		private IMvxCommand _saveCommand;
+		private DateTimeOffset? _dateTimeOffset;
+		private TimeSpan? _timeSpan;
 
 		public BloodDonationEditViewModel(string donationId = null)
 		{
@@ -35,6 +37,12 @@ namespace BloodApp.Core.ViewModels
 			set
 			{
 				this._bloodDonation = value;
+				if (this._bloodDonation.Date != null) {
+					this._dateTimeOffset = new DateTimeOffset(this._bloodDonation.Date.Value);
+					this._timeSpan = new TimeSpan(this._bloodDonation.Date.Value.Hour, this._bloodDonation.Date.Value.Minute,
+						this._bloodDonation.Date.Value.Second);
+				}
+
 				this.RaiseAllPropertiesChanged();
 			}
 		}
@@ -81,16 +89,22 @@ namespace BloodApp.Core.ViewModels
 			}
 		}
 
-		public DateTime? Date
+		public DateTimeOffset? Date
 		{
-			get { return this.BloodDonation?.Date; }
+			get { return this._dateTimeOffset; }
 			set
 			{
-				if (this.BloodDonation == null) {
-					return;
-				}
+				this._dateTimeOffset = value;
+				this.RaisePropertyChanged();
+			}
+		}
 
-				this.BloodDonation.Date = value;
+		public TimeSpan? Time
+		{
+			get { return this._timeSpan; }
+			set
+			{
+				this._timeSpan = value;
 				this.RaisePropertyChanged();
 			}
 		}
@@ -174,6 +188,8 @@ namespace BloodApp.Core.ViewModels
 					{
 						// todo: validate form
 
+						//todo: save date and time
+
 						try {
 							if (this._editMode == EditMode.Creating) {
 								await this._donationService.Value.CreateBloodDonationAsync(this.BloodDonation);
@@ -190,6 +206,16 @@ namespace BloodApp.Core.ViewModels
 
 				return this._saveCommand;
 			}
+		}
+
+		public bool IsCreatingNewDonation
+		{
+			get { return this._editMode == EditMode.Creating; }
+		}
+
+		public bool IsModifyingDonation
+		{
+			get { return this._editMode == EditMode.Modifying; }
 		}
 
 		protected async Task LoadData()

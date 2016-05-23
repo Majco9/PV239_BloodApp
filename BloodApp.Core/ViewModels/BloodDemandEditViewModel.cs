@@ -108,6 +108,13 @@ namespace BloodApp.Core.ViewModels
 			}
 		}
 
+		public bool IsCreatingNewDemand
+		{
+			get {
+				return this._editMode == EditMode.Creating;
+			}
+		}
+
 		public override async void Start()
 		{
 			base.Start();
