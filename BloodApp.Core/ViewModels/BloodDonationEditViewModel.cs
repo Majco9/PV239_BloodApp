@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 using BloodApp.Core.Model;
 using BloodApp.Core.Services;
 using BloodApp.Core.Services.Exceptions;
@@ -187,25 +188,47 @@ namespace BloodApp.Core.ViewModels
 					this._saveCommand = new MvxCommand(async () =>
 					{
 						// todo: validate form
+						if (!this.ValidateForm()) {
+							// todo: handle it
+						}
 
 						//todo: save date and time
+							this.BloodDonation.Date = this.PrepareTimeAndDate();
 
-						try {
-							if (this._editMode == EditMode.Creating) {
-								await this._donationService.Value.CreateBloodDonationAsync(this.BloodDonation);
-							} else {
-								await this._donationService.Value.UpdateBloodDonationAsync(this.BloodDonation);
+							try {
+								if (this._editMode == EditMode.Creating) {
+									await this._donationService.Value.CreateBloodDonationAsync(this.BloodDonation);
+								} else {
+									await this._donationService.Value.UpdateBloodDonationAsync(this.BloodDonation);
+								}
+
+								this.Close(this);
+							} catch (ServiceException) {
+								//todo: handle it
+								var userDialogs = Mvx.Resolve<IUserDialogs>();
+								userDialogs.Alert(new AlertConfig {Title = "Error", Message = "Error while creating new donation"});
 							}
-
-							this.Close(this);
-						} catch (ServiceException ex) {
-							//todo: handle it
-						}
+						
 					});
 				}
 
 				return this._saveCommand;
 			}
+		}
+
+		private bool ValidateForm()
+		{
+			return true;
+		}
+
+		private DateTime? PrepareTimeAndDate()
+		{
+			if (this._dateTimeOffset == null || this._timeSpan == null) {
+				return null;
+			}
+
+			return new DateTime(this._dateTimeOffset.Value.Day, this._dateTimeOffset.Value.Month,
+				this._dateTimeOffset.Value.Day, this._timeSpan.Value.Hours, this._timeSpan.Value.Minutes, this._timeSpan.Value.Seconds);
 		}
 
 		public bool IsCreatingNewDonation

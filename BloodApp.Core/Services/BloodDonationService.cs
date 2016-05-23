@@ -5,6 +5,7 @@ using BloodApp.Core.Model;
 using BloodApp.Core.Services.Exceptions;
 using Microsoft.WindowsAzure.MobileServices;
 using MvvmCross.Platform;
+using Newtonsoft.Json.Linq;
 
 namespace BloodApp.Core.Services
 {

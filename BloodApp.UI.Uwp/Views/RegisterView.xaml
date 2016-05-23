@@ -11,7 +11,7 @@
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="10">
 		<StackPanel>
 			 
-			<TextBlock Text="Registration" Style="{StaticResource HeaderTextBlockStyle}" Margin="0,0,0,15"/>
+			<TextBlock Text="Registration" Style="{StaticResource SubheaderTextBlockStyle}" Margin="0,0,0,15"/>
 
 			<TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="Email"
 				   Style="{StaticResource BodyTextBlockStyle}"/>

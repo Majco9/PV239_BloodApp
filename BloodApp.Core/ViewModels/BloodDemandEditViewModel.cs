@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using BloodApp.Core.Model;
 using BloodApp.Core.Services;
@@ -108,11 +110,21 @@ namespace BloodApp.Core.ViewModels
 			}
 		}
 
-		public bool IsCreatingNewDemand
+		public List<BloodType> BloodTypes
+		{
+			get { return Enum.GetValues(typeof(BloodType)).Cast<BloodType>().ToList(); }
+		}
+
+		public bool IsCreatingDemand
 		{
 			get {
 				return this._editMode == EditMode.Creating;
 			}
+		}
+
+		public bool IsModifyingDemand
+		{
+			get { return this._editMode == EditMode.Modifying; }
 		}
 
 		public override async void Start()

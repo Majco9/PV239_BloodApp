@@ -8,6 +8,21 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+		<ProgressBar VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}"/>
+		<ScrollViewer VerticalScrollMode="Enabled">
+			<StackPanel Padding="15">
+				<TextBlock Text="New Blood Demand" Style="{StaticResource SubheaderTextBlockStyle}" Visibility="{Binding IsCreatingDemand, Converter={StaticResource BoolToVisibilityConverter}}" />
+				<TextBlock Text="Edit Blood Demand" Style="{StaticResource SubheaderTextBlockStyle}" Visibility="{Binding IsModifyingDemand, Converter={StaticResource BoolToVisibilityConverter}}" />
 
-    </Grid>
+				<TextBox Margin="0,15,0,0" Header="Description" PlaceholderText="Type description" Text="{Binding Description, Mode=TwoWay}" Height="100" AcceptsReturn="True" TextWrapping="Wrap" />
+
+				<TextBox Margin="0,15,0,0" Header="Instructions" PlaceholderText="Type instructions" Text="{Binding Instructions, Mode=TwoWay}" Height="100" AcceptsReturn="True" TextWrapping="Wrap" />
+
+				<ComboBox Margin="0,15,0,0" Header="Blood Group" HorizontalAlignment="Stretch" PlaceholderText="Select blood group" ItemsSource="{Binding BloodTypes}" SelectedItem="{Binding BloodGroup, Mode=TwoWay}" />
+
+				<Button Margin="0,15,0,0" HorizontalAlignment="Stretch" Content="Save" Command="{Binding SaveCommand}" />
+
+			</StackPanel>
+		</ScrollViewer>
+	</Grid>
 </local:BaseWinPage>

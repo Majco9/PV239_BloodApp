@@ -24,7 +24,7 @@
 
 				<TimePicker Margin="0,15,0,0" Header="Time" HorizontalAlignment="Stretch" Time="{Binding Time, Mode=TwoWay}"/>
 
-				<TextBox Margin="0,15,0,0" Header="Description" PlaceholderText="Type description" Text="{Binding Description, Mode=TwoWay}" Height="100" />
+				<TextBox Margin="0,15,0,0" Header="Description" PlaceholderText="Type description" Text="{Binding Description, Mode=TwoWay}" Height="100" AcceptsReturn="True" TextWrapping="Wrap" />
 
 				<TextBlock Text="Event's address" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,15,0,0"/>
 
@@ -38,6 +38,8 @@
 
 				<TextBox Margin="0,15,0,0" Text="{Binding ZipCode, Mode=TwoWay}" Header="Zip Code" />
 
+				<Button HorizontalAlignment="Stretch" Content="Save" Command="{Binding SaveCommand}" />
+				
 			</StackPanel>
 		</ScrollViewer>
 	</Grid>
