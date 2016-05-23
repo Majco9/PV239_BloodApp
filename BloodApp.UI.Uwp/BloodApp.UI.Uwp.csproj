@@ -103,8 +103,14 @@
     <Compile Include="Views\BloodDemandDetailView.xaml.cs">
       <DependentUpon>BloodDemandDetailView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\BloodDemandEditView.xaml.cs">
+      <DependentUpon>BloodDemandEditView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\BloodDonationDetailView.xaml.cs">
       <DependentUpon>BloodDonationDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BloodDonationEditView.xaml.cs">
+      <DependentUpon>BloodDonationEditView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
@@ -152,7 +158,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\BloodDemandEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\BloodDonationDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BloodDonationEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
