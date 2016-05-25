@@ -132,7 +132,7 @@ namespace BloodApp.Core.ViewModels
 			base.Start();
 			if (this._editMode == EditMode.Creating) {
 				var userService = Mvx.Resolve<IUserService>();
-				this.BloodDemand.PublisherId = userService.GetIdOfLoggedUser();
+				this.BloodDemand.PublisherdId = userService.GetIdOfLoggedUser();
 			} else {
 				await this.LoadData();
 			}

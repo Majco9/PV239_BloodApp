@@ -80,7 +80,7 @@ namespace BloodApp.Core.ViewModels
 			get
 			{
 				var userService = Mvx.Resolve<IUserService>();
-				return this.BloodDemand?.PublisherId == userService.GetIdOfLoggedUser();
+				return this.BloodDemand?.PublisherdId == userService.GetIdOfLoggedUser();
 			}
 		}
 		

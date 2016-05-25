@@ -44,6 +44,11 @@ namespace BloodApp.Core.Model
 		/// Donation's created date
 		/// </summary>
 		public DateTime CreatedAt { get; set; }
-		 
+
+		/// <summary>
+		/// Donation's deleted flag
+		/// </summary>
+		public bool Deleted { get; set; }
+
 	}
 }

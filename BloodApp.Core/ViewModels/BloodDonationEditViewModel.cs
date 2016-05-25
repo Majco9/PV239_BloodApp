@@ -227,7 +227,7 @@ namespace BloodApp.Core.ViewModels
 				return null;
 			}
 
-			return new DateTime(this._dateTimeOffset.Value.Day, this._dateTimeOffset.Value.Month,
+			return new DateTime(this._dateTimeOffset.Value.Year, this._dateTimeOffset.Value.Month,
 				this._dateTimeOffset.Value.Day, this._timeSpan.Value.Hours, this._timeSpan.Value.Minutes, this._timeSpan.Value.Seconds);
 		}
 

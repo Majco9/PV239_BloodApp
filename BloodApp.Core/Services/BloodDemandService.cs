@@ -5,6 +5,7 @@ using BloodApp.Core.Model;
 using BloodApp.Core.Services.Exceptions;
 using Microsoft.WindowsAzure.MobileServices;
 using MvvmCross.Platform;
+using Newtonsoft.Json;
 
 namespace BloodApp.Core.Services
 {
@@ -56,8 +57,8 @@ namespace BloodApp.Core.Services
 		public async Task<BloodDemand> CreateBloodDemandAsync(BloodDemand demand)
 		{
 			try {
-				demand.Id = Guid.NewGuid().ToString();
 				demand.CreatedAt = DateTime.Now;
+				demand.Deleted = false;
 				await this._client.GetTable<BloodDemand>().InsertAsync(demand);
 				return demand;
 			} catch (Exception ex) {

@@ -39,8 +39,8 @@ namespace BloodApp.Core.Services
 		public async Task<BloodDonation> CreateBloodDonationAsync(BloodDonation donation)
 		{
 			try {
-				donation.Id = Guid.NewGuid().ToString();
 				donation.CreatedAt = DateTime.Now;
+				donation.Deleted = false;
 				await this._client.GetTable<BloodDonation>().InsertAsync(donation);
 				return donation;
 			} catch (Exception ex) {

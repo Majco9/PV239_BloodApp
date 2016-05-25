@@ -11,8 +11,9 @@ namespace BloodApp.Core.Model
 
 		/// <summary>
 		/// Guid of user that created this demand
+		/// todo: neskor premenovat naspat
 		/// </summary>
-		public string PublisherId { get; set; }
+		public string PublisherdId { get; set; }
 
 		/// <summary>
 		/// Demand's description
@@ -33,5 +34,10 @@ namespace BloodApp.Core.Model
 		/// Demand's created time
 		/// </summary>
 		public DateTime CreatedAt { get; set; }
+
+		/// <summary>
+		/// Demand's delete flag
+		/// </summary>
+		public bool Deleted { get; set; }
 	}
 }
