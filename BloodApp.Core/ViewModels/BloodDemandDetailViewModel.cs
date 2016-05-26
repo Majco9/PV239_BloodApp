@@ -43,8 +43,15 @@ namespace BloodApp.Core.ViewModels
 			try {
 				this.IsLoading = true;
 				this.BloodDemand = await this._bloodDemandrService.Value.GetBloodDemandAsync(this._bloodDemandId);
-			} catch (ServiceException ex) {
-				// todo: handle it
+			} catch (ServiceException) {
+				var userDialogs = Mvx.Resolve<IUserDialogs>();
+				var alertConfig = new AlertConfig
+				{
+					Title = "Error",
+					Message = "Erro while loading donation event!"
+				};
+				userDialogs.Alert(alertConfig);
+				this.Close(this);
 			}
 
 			this.IsLoading = false;
@@ -112,7 +119,7 @@ namespace BloodApp.Core.ViewModels
 						try {
 							this._bloodDemandrService.Value.RemoveBloodDemandAsync(this.BloodDemand);
 							this.Close(this);
-							// todo: undo dialog
+							// todo: add undo dialog
 						} catch (ServiceException) {
 							//todo: ohlasit chybu
 						}

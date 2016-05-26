@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 using BloodApp.Core.Model;
 using BloodApp.Core.Services;
 using BloodApp.Core.Services.Exceptions;
@@ -53,7 +54,14 @@ namespace BloodApp.Core.ViewModels
 				this.IsLoading = true;
 				this.BloodDonation = await this._donationService.Value.GetBloodDonationAsync(this._donationId);
 			} catch (ServiceException) {
-				//todo: handle it
+				var userDialogs = Mvx.Resolve<IUserDialogs>();
+				var alertConfig = new AlertConfig
+				{
+					Title = "Error",
+					Message = "Erro while loading donation event!"
+				};
+				userDialogs.Alert(alertConfig);
+				this.Close(this);
 			}
 
 			this.IsLoading = false;

@@ -52,11 +52,10 @@ namespace BloodApp.Core.ViewModels
 						if (loginResult) {
 							this.ShowViewModel<HomeViewModel>();
 						} else {
-							//todo: show dialog with error
 							var alertConfig = new AlertConfig
 							{
-								Title = "Chyba",
-								Message = "Prihlasenie bolo neuspesne!"
+								Title = "Error",
+								Message = "Login was unsuccessful!"
 							};
 							userDialogs.Alert(alertConfig);
 						}
