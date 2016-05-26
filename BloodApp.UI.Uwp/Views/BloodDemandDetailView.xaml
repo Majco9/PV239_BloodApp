@@ -35,8 +35,8 @@
 
 		<CommandBar VerticalAlignment="Bottom" Visibility="{Binding IsUserOwner, Converter={StaticResource BoolToVisibilityConverter}}">
 			<CommandBar.PrimaryCommands>
-				<AppBarButton Icon="Edit" Label="Edit" />
-				<AppBarButton Icon="Delete" Label="Delete" />
+				<AppBarButton Icon="Edit" Label="Edit" Command="{Binding GoToEditCommand}" />
+				<AppBarButton Icon="Delete" Label="Delete" Command="{Binding DeleteCommand}" />
 			</CommandBar.PrimaryCommands>
 		</CommandBar>
 		</Grid>

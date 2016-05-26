@@ -7,7 +7,9 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Core;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -70,6 +72,13 @@ namespace BloodApp.UI.Uwp
 
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
+
+				// Title bar button colors
+				ApplicationView.GetForCurrentView().TitleBar.ButtonForegroundColor = Colors.DarkRed;
+				ApplicationView.GetForCurrentView().TitleBar.ButtonBackgroundColor = Colors.White;
+				ApplicationView.GetForCurrentView().TitleBar.ButtonHoverBackgroundColor = Colors.DarkRed;
+				ApplicationView.GetForCurrentView().TitleBar.ButtonHoverForegroundColor = Colors.White;
+
 
 				SystemNavigationManager.GetForCurrentView().BackRequested += (sender, args) =>
 				{

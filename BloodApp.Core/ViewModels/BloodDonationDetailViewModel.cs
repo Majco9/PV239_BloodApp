@@ -12,6 +12,8 @@ namespace BloodApp.Core.ViewModels
 	{
 		private readonly Lazy<IBloodDonationService> _donationService;
 		private string _donationId;
+		private IMvxCommand _goToEditCommand;
+		private IMvxCommand _deleteCommand;
 
 		private BloodDonation _bloodDonation;
 
@@ -50,7 +52,7 @@ namespace BloodApp.Core.ViewModels
 			try {
 				this.IsLoading = true;
 				this.BloodDonation = await this._donationService.Value.GetBloodDonationAsync(this._donationId);
-			} catch (ServiceException ex) {
+			} catch (ServiceException) {
 				//todo: handle it
 			}
 
@@ -80,6 +82,42 @@ namespace BloodApp.Core.ViewModels
 			{
 				var userService = Mvx.Resolve<IUserService>();
 				return this.BloodDonation?.DonorId == userService.GetIdOfLoggedUser();
+			}
+		}
+
+		public IMvxCommand GoToEditCommand
+		{
+			get
+			{
+				if (this._goToEditCommand == null) {
+					this._goToEditCommand = new MvxCommand(() =>
+					{
+						this.ShowViewModel<BloodDonationEditViewModel>(new { donationId = this.BloodDonation.Id });
+					});
+				}
+
+				return this._goToEditCommand;
+			}
+		}
+
+		public IMvxCommand DeleteCommand
+		{
+			get
+			{
+				if (this._deleteCommand == null) {
+					this._deleteCommand = new MvxCommand(() =>
+					{
+						try {
+							this._donationService.Value.RemoveBloodDonationAsync(this.BloodDonation);
+							this.Close(this);
+							// todo: add undo dialog
+						} catch (ServiceException) {
+							// todo: ohlasit chybu
+						}
+					});
+				}
+
+				return this._deleteCommand;
 			}
 		}
 	}

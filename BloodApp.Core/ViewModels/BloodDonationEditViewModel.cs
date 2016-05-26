@@ -11,18 +11,22 @@ namespace BloodApp.Core.ViewModels
 {
 	public class BloodDonationEditViewModel : BaseViewModel
 	{
-		private readonly string _donationId;
+		private string _donationId;
 		private readonly Lazy<IBloodDonationService> _donationService;
-		private readonly EditMode _editMode;
+		private EditMode _editMode;
 
 		private BloodDonation _bloodDonation;
 		private IMvxCommand _saveCommand;
 		private DateTimeOffset? _dateTimeOffset;
 		private TimeSpan? _timeSpan;
 
-		public BloodDonationEditViewModel(string donationId = null)
+		public BloodDonationEditViewModel()
 		{
 			this._donationService = new Lazy<IBloodDonationService>(Mvx.Resolve<IBloodDonationService>);
+		}
+
+		public void Init(string donationId = null)
+		{
 			if (string.IsNullOrEmpty(donationId)) {
 				this._editMode = EditMode.Creating;
 				this.BloodDonation = new BloodDonation { CreatedAt = DateTime.Now, Address = new Address() };
@@ -30,6 +34,7 @@ namespace BloodApp.Core.ViewModels
 				this._editMode = EditMode.Modifying;
 				this._donationId = donationId;
 			}
+
 		}
 
 		public BloodDonation BloodDonation

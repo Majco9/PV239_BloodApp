@@ -12,16 +12,20 @@ namespace BloodApp.Core.ViewModels
 {
 	public class BloodDemandEditViewModel : BaseViewModel
 	{
-		private readonly string _demandId;
+		private string _demandId;
 		private readonly Lazy<IBloodDemandService> _demandService;
-		private readonly EditMode _editMode;
+		private EditMode _editMode;
 		private BloodDemand _bloodDemand;
 		private IMvxCommand _saveCommand;
 
-		public BloodDemandEditViewModel(string demandId = null)
+		public BloodDemandEditViewModel()
 		{
 			this._demandService = new Lazy<IBloodDemandService>(Mvx.Resolve<IBloodDemandService>);
 
+		}
+
+		public void Init(string demandId = null)
+		{
 			if (string.IsNullOrEmpty(demandId)) {
 				this._editMode = EditMode.Creating;
 				this.BloodDemand = new BloodDemand { CreatedAt = DateTime.Now };

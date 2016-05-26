@@ -105,10 +105,10 @@ namespace BloodApp.Core.Services
 			}
 		}
 
-		public void LogoutUser()
+		public async void LogoutUser()
 		{
 			var client = Mvx.Resolve<IMobileServiceClient>();
-			client.CurrentUser = null;
+			await client.LogoutAsync();
 			var settings = Mvx.Resolve<ISettings>();
 			settings.Remove("token");
 			settings.Remove("userId");

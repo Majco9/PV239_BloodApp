@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 using BloodApp.Core.Model;
 using BloodApp.Core.Services;
 using BloodApp.Core.Services.Exceptions;
@@ -12,6 +13,8 @@ namespace BloodApp.Core.ViewModels
 	{
 		private readonly Lazy<IBloodDemandService> _bloodDemandrService;
 		private string _bloodDemandId;
+		private IMvxCommand _goToEditCommand;
+		private IMvxCommand _deleteCommand;
 
 		private BloodDemand _bloodDemand;
 
@@ -81,6 +84,42 @@ namespace BloodApp.Core.ViewModels
 			{
 				var userService = Mvx.Resolve<IUserService>();
 				return this.BloodDemand?.PublisherdId == userService.GetIdOfLoggedUser();
+			}
+		}
+
+		public IMvxCommand GoToEditCommand
+		{
+			get
+			{
+				if (this._goToEditCommand == null) {
+					this._goToEditCommand = new MvxCommand(() =>
+					{
+						this.ShowViewModel<BloodDemandEditViewModel>(new { demandId = this.BloodDemand.Id });
+					});
+				}
+
+				return this._goToEditCommand;
+			}
+		}
+
+		public IMvxCommand DeleteCommand
+		{
+			get
+			{
+				if (this._deleteCommand == null) {
+					this._deleteCommand = new MvxCommand(() =>
+					{
+						try {
+							this._bloodDemandrService.Value.RemoveBloodDemandAsync(this.BloodDemand);
+							this.Close(this);
+							// todo: undo dialog
+						} catch (ServiceException) {
+							//todo: ohlasit chybu
+						}
+					});
+				}
+
+				return this._deleteCommand;
 			}
 		}
 		
