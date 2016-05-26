@@ -83,12 +83,31 @@ namespace BloodApp.Core.Services
 		public async Task<bool> CheckForValidTokenAsync()
 		{
 			var client = Mvx.Resolve<IMobileServiceClient>();
+			var settings = Mvx.Resolve<ISettings>();
+			var token = settings.Get<string>("token");
+			var userId = settings.Get<string>("userId");
+
+			if (client.CurrentUser == null && !string.IsNullOrEmpty(token) && !string.IsNullOrEmpty(userId)) {
+				client.CurrentUser = new MobileServiceUser(userId);
+				client.CurrentUser.MobileServiceAuthenticationToken = token;
+			}
+
 			try {
+				// try to download some data from server
 				await client.GetTable<BloodDonation>().Take(1).ToListAsync();
 				return true;
 			} catch (Exception) {
 				return false;
 			}
+		}
+
+		public void LogoutUser()
+		{
+			var client = Mvx.Resolve<IMobileServiceClient>();
+			client.CurrentUser = null;
+			var settings = Mvx.Resolve<ISettings>();
+			settings.Remove("token");
+			settings.Remove("userId");
 		}
 	}
 }

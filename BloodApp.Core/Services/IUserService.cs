@@ -33,5 +33,13 @@ namespace BloodApp.Core.Services
 		/// <returns><value>true</value> if user's token is valid, otherwise returns <value>false</value></returns>
 		Task<bool> CheckForValidTokenAsync();
 
+		/// <summary>
+		/// Logout current user
+		/// 
+		/// Warning!..methods doesn't navigate to login view
+		/// </summary>
+		/// <returns></returns>
+		void LogoutUser();
+
 	}
 }

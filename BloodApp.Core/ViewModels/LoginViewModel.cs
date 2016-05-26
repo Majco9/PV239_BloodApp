@@ -82,6 +82,21 @@ namespace BloodApp.Core.ViewModels
 				return this._goToRegisterCommand;
 			}
 		}
-		
+
+		public override async void Start()
+		{
+			base.Start();
+
+			this.IsLoading = true;
+
+			var userService = Mvx.Resolve<IUserService>();
+			var isValidToken = await userService.CheckForValidTokenAsync();
+
+			this.IsLoading = false;
+
+			if (isValidToken) {
+				this.ShowViewModel<HomeViewModel>();
+			}
+		}
 	}
 }

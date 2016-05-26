@@ -23,7 +23,7 @@ namespace BloodApp.Core
 
 			var client = new MobileServiceClient(new Uri(App.ServerUri));
 			Mvx.RegisterSingleton<IMobileServiceClient>(client);
-			Mvx.RegisterSingleton<IUserDialogs>(() => UserDialogs.Instance);
+			Mvx.RegisterSingleton(() => UserDialogs.Instance);
 
 		}
 	}
