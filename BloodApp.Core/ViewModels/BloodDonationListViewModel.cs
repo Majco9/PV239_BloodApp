@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 using BloodApp.Core.Services;
 using BloodApp.Core.Services.Exceptions;
 using MvvmCross.Core.ViewModels;
@@ -56,6 +57,13 @@ namespace BloodApp.Core.ViewModels
 						.Select(e => new BloodDonationListItemViewModel(e)));
 			} catch (ServiceException ex) {
 				//todo: handle it (some toast)
+				var userDialogs = Mvx.Resolve<IUserDialogs>();
+				var alertConfig = new AlertConfig
+				{
+					Title = "Error",
+					Message = "Login was unsuccessful!"
+				};
+				userDialogs.Alert(alertConfig);
 				Debug.WriteLine("Error while loading data..message: {0}", ex.Message);
 			}
 			this.IsLoading = false;

@@ -197,7 +197,6 @@ namespace BloodApp.Core.ViewModels
 							// todo: handle it
 						}
 
-						//todo: save date and time
 							this.BloodDonation.Date = this.PrepareTimeAndDate();
 
 							try {
@@ -209,7 +208,6 @@ namespace BloodApp.Core.ViewModels
 
 								this.Close(this);
 							} catch (ServiceException) {
-								//todo: handle it
 								var userDialogs = Mvx.Resolve<IUserDialogs>();
 								userDialogs.Alert(new AlertConfig {Title = "Error", Message = "Error while creating new donation"});
 							}

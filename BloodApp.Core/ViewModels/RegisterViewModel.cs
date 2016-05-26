@@ -44,7 +44,6 @@ namespace BloodApp.Core.ViewModels
 
 							if (registerResult) {
 								//todo: show dialog
-
 								var settings = Mvx.Resolve<ISettings>();
 								settings.Set("NotFirstAppAppRun", true);
 

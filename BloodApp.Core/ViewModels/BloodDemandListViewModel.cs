@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 using BloodApp.Core.Model;
 using BloodApp.Core.Services;
 using BloodApp.Core.Services.Exceptions;
@@ -52,8 +53,14 @@ namespace BloodApp.Core.ViewModels
 				var demands = await this._demandService.Value.ListAllBloodDemandsAsync();
 				this.BloodDemands = new ObservableCollection<BloodDemandListItemViewModel>(demands
 						.Select(e => new BloodDemandListItemViewModel(e)));
-			} catch (ServiceException ex) {
-				// todo: handle it
+			} catch (ServiceException) {
+				var userDialogs = Mvx.Resolve<IUserDialogs>();
+				var alertConfig = new AlertConfig
+				{
+					Title = "Error",
+					Message = "Error while loading data!"
+				};
+				userDialogs.Alert(alertConfig);
 			}
 			this.IsLoading = false;
 		}

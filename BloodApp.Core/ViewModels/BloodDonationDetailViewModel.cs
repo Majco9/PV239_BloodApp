@@ -120,7 +120,13 @@ namespace BloodApp.Core.ViewModels
 							this.Close(this);
 							// todo: add undo dialog
 						} catch (ServiceException) {
-							// todo: ohlasit chybu
+							var userDialogs = Mvx.Resolve<IUserDialogs>();
+							var alertConfig = new AlertConfig
+							{
+								Title = "Error",
+								Message = "Error while removing donation event!"
+							};
+							userDialogs.Alert(alertConfig);
 						}
 					});
 				}
