@@ -1,5 +1,4 @@
-﻿using Acr.Settings;
-using Acr.UserDialogs;
+﻿using Acr.UserDialogs;
 using BloodApp.Core.Services;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;

@@ -9,7 +9,6 @@ using BloodApp.Core.Model.Register;
 using Microsoft.WindowsAzure.MobileServices;
 using MvvmCross.Platform;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace BloodApp.Core.Services
 {
