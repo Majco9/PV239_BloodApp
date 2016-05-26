@@ -54,7 +54,7 @@ namespace BloodApp.Core.Services
 		}
 
 		/// <summary>
-		/// TODO: fix!!!
+		/// Register new user
 		/// </summary>
 		/// <param name="registerModel"></param>
 		/// <returns></returns>
@@ -62,7 +62,8 @@ namespace BloodApp.Core.Services
 		{
 			var client = Mvx.Resolve<IMobileServiceClient>();
 			try {
-				var tmp = await client.InvokeApiAsync("auth/register", JsonConvert.SerializeObject(registerModel), HttpMethod.Post, null);
+
+				await client.InvokeApiAsync("auth/register", JsonConvert.SerializeObject(registerModel), HttpMethod.Post, null);
 
 				return true;
 			} catch (Exception ex) {

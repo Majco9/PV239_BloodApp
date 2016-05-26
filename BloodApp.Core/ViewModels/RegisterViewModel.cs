@@ -26,6 +26,7 @@ namespace BloodApp.Core.ViewModels
 				if (this._registerCommand == null) {
 					this._registerCommand = new MvxCommand(async () =>
 					{
+						this.IsLoading = true;
 						if (this.ValidForm()) {
 
 							var registration = new RegisterUserModel
@@ -34,7 +35,8 @@ namespace BloodApp.Core.ViewModels
 								BloodGroup = this.BloodGroup.Value,
 								Password = this.Password,
 								PasswordVerify = this.ConfirmPassword,
-								Email = this.Email
+								Email = this.Email,
+								Name = this.Name
 							};
 
 							var userService = Mvx.Resolve<IUserService>();
@@ -54,6 +56,8 @@ namespace BloodApp.Core.ViewModels
 						} else {
 							// totod: show error dialog
 						}
+
+						this.IsLoading = false;
 
 					});
 				}
