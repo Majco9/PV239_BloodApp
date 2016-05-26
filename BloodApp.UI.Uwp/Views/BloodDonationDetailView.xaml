@@ -22,7 +22,7 @@
 			</StackPanel>
 			<StackPanel Orientation="Horizontal" Margin="0,0,0,10">
 				<FontIcon Glyph="&#xE1C4;"/>
-				<TextBlock Text="{Binding Address}" Margin="10,0,0,0"></TextBlock>
+				<TextBlock Text="{Binding Address}" Margin="10,0,0,0" TextWrapping="Wrap"/>
 			</StackPanel>
 			<TextBlock Margin="0,10,0,0" Text="{Binding Description}" TextWrapping="Wrap" />
 		</StackPanel>

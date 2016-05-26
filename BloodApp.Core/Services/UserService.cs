@@ -87,7 +87,11 @@ namespace BloodApp.Core.Services
 			var token = settings.Get<string>("token");
 			var userId = settings.Get<string>("userId");
 
-			if (client.CurrentUser == null && !string.IsNullOrEmpty(token) && !string.IsNullOrEmpty(userId)) {
+			if (string.IsNullOrEmpty(token) && string.IsNullOrEmpty(userId)) {
+				return false;
+			}
+
+			if (client.CurrentUser == null) {
 				client.CurrentUser = new MobileServiceUser(userId);
 				client.CurrentUser.MobileServiceAuthenticationToken = token;
 			}

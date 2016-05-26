@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using BloodApp.Core.Services;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 
@@ -30,6 +31,25 @@ namespace BloodApp.Core.ViewModels
 
 		private IMvxCommand _goToAddDemandCommand;
 		private IMvxCommand _goToAddDonationCommand;
+		private IMvxCommand _logoutCommand;
+
+		public IMvxCommand LogoutCommand
+		{
+			get
+			{
+				if (this._logoutCommand == null) {
+					this._logoutCommand = new MvxCommand(() =>
+					{
+						var userService = Mvx.Resolve<IUserService>();
+						userService.LogoutUser();
+
+						this.Close(this);
+					});
+				}
+
+				return this._logoutCommand;
+			}
+		}
 
 		public IMvxCommand GoToAddDonationCommand
 		{
@@ -60,5 +80,6 @@ namespace BloodApp.Core.ViewModels
 				return this._goToAddDemandCommand;
 			}
 		}
+
 	}
 }

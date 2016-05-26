@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Width="64" Height="68" IsTabStop="False">
+    Width="100" Height="68" IsTabStop="False">
 
 	<StackPanel >
 		<FontIcon
@@ -20,7 +20,7 @@
                             Style="{StaticResource CaptionTextBlockStyle}"
                             LineStackingStrategy="BlockLineHeight"
                             LineHeight="14"
-                            MaxLines="2"
+                            MaxLines="1"
                             IsTextScaleFactorEnabled="False"
                             TextAlignment="Center"
                             HorizontalAlignment="Center"

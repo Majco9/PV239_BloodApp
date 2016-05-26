@@ -339,7 +339,7 @@
 			<Pivot x:Name="PagePivot" Style="{StaticResource TabsStylePivotStyle}">
 				<PivotItem DataContext="{Binding BloodDonationListViewModel}">
 					<PivotItem.Header>
-						<local:TabHeader Label="Donations" Glyph="&#xEA37;"/>
+						<local:TabHeader Label="Blood Donations" Glyph="&#xEA37;"/>
 					</PivotItem.Header>
 					<StackPanel>
 						<ProgressBar VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}"/>
@@ -387,6 +387,11 @@
 				</AppBarButton.Flyout>
 			</AppBarButton>
 			<AppBarButton Icon="Filter" Label="Filter"></AppBarButton>
+			<AppBarButton  Label="Logout" Command="{Binding LogoutCommand}">
+				<AppBarButton.Icon>
+					<BitmapIcon UriSource="ms-appx:///Assets/logout.png"></BitmapIcon>
+				</AppBarButton.Icon>
+			</AppBarButton>
 		</CommandBar>
 	</Grid>
 </local:BaseWinPage>
