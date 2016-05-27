@@ -29,6 +29,17 @@ namespace BloodApp.UI.Uwp
     /// </summary>
     sealed partial class App : Application
     {
+
+		/// <summary>
+		/// Names of view models, that back button should "exit" app
+		/// </summary>
+		private readonly List<string> _rootPages = new List<string>
+		{
+			nameof(HomeViewModel), nameof(BloodDonationListViewModel),
+			nameof(BloodDemandListViewModel), nameof(LoginViewModel),
+			nameof(RegisterViewModel)
+		};
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -78,12 +89,21 @@ namespace BloodApp.UI.Uwp
 				ApplicationView.GetForCurrentView().TitleBar.ButtonBackgroundColor = Colors.White;
 				ApplicationView.GetForCurrentView().TitleBar.ButtonHoverBackgroundColor = Colors.DarkRed;
 				ApplicationView.GetForCurrentView().TitleBar.ButtonHoverForegroundColor = Colors.White;
-
+	            ApplicationView.GetForCurrentView().TitleBar.ButtonPressedBackgroundColor = Colors.DarkRed;
+				ApplicationView.GetForCurrentView().TitleBar.ButtonPressedForegroundColor = Colors.White;
 
 				SystemNavigationManager.GetForCurrentView().BackRequested += (sender, args) =>
 				{
+					// Hardware back button hanling
+					if (this._rootPages.Contains(BaseViewModel.ActiveViewModel.GetType().Name)) {
+						args.Handled = false;
+					} else {
+						args.Handled = true;
+					}
+
 					BaseViewModel.ActiveViewModel.BackCommand.Execute();
 				};
+				
 			}
 
             if (rootFrame.Content == null)
