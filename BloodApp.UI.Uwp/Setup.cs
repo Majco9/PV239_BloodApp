@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using Windows.ApplicationModel.Resources;
+using Windows.UI.Xaml.Controls;
 using Acr.Settings;
 using BloodApp.Core.Services;
 using MvvmCross.Core.ViewModels;

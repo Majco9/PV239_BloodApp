@@ -1,6 +1,4 @@
-﻿using System.Resources;
-using BloodApp.Core.Strings.en_US;
-using MvvmCross.Core.ViewModels;
+﻿using MvvmCross.Core.ViewModels;
 
 namespace BloodApp.Core.ViewModels
 {
@@ -10,8 +8,6 @@ namespace BloodApp.Core.ViewModels
 		public static BaseViewModel ActiveViewModel;
 		private IMvxCommand _backCommand;
 		private bool _isLoading;
-
-		public string this[string key] => Resources.ResourceManager.GetString(key);
 
 		public IMvxCommand BackCommand
 		{
