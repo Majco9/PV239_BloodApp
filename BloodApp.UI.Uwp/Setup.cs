@@ -2,6 +2,7 @@
 using Windows.UI.Xaml.Controls;
 using Acr.Settings;
 using BloodApp.Core.Services;
+using BloodApp.UI.Uwp.Utils;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 using MvvmCross.Platform.Plugins;
@@ -32,7 +33,7 @@ namespace BloodApp.UI.Uwp
 			
 			// -- Manually load plugins
 			Mvx.RegisterSingleton(Settings.Local);
-
+			Mvx.RegisterSingleton(new TextProvider());
 		}
 	}
 }

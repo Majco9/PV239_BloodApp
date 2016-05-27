@@ -90,6 +90,8 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="project.json" />
+    <PRIResource Include="Strings\en-US\Resources.resw" />
+    <PRIResource Include="Strings\cs-CZ\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -99,6 +101,7 @@
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setup.cs" />
+    <Compile Include="Utils\TextProvider.cs" />
     <Compile Include="Views\BaseWinPage.cs" />
     <Compile Include="Views\BloodDemandDetailView.xaml.cs">
       <DependentUpon>BloodDemandDetailView.xaml</DependentUpon>
