@@ -120,4 +120,7 @@
   <data name="SignInBtn.Content" xml:space="preserve">
     <value>Přihlásit</value>
   </data>
+  <data name="SignInErrorText" xml:space="preserve">
+    <value>Nastala chyba počas přihlasování!</value>
+  </data>
 </root>

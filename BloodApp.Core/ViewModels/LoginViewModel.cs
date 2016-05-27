@@ -1,5 +1,6 @@
 ﻿using Acr.UserDialogs;
 using BloodApp.Core.Services;
+using BloodApp.Core.Utils;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 
@@ -52,10 +53,11 @@ namespace BloodApp.Core.ViewModels
 						if (loginResult) {
 							this.ShowViewModel<HomeViewModel>();
 						} else {
+							var textProvider = Mvx.Resolve<ITextProvider>();
 							var alertConfig = new AlertConfig
 							{
 								Title = "Error",
-								Message = "Login was unsuccessful!"
+								Message = textProvider.GetText("SignInErrorText")
 							};
 							userDialogs.Alert(alertConfig);
 						}
