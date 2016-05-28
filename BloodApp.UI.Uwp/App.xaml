@@ -11,11 +11,15 @@
 		<ResourceDictionary>
 			<ResourceDictionary.ThemeDictionaries>
 				<ResourceDictionary x:Key="Default">
-					<Color x:Key="SecondaryColor">#ef2358</Color>
+					<!--<Color x:Key="SecondaryColor">#ef2358</Color>-->
+					<Color x:Key="SecondaryColor">#fd005a</Color>
+					<Color x:Key="CommandBarBackgroundColor">#FFEEEEEE</Color>
 					<Color x:Key="PrimaryColor">#c20045</Color>
 
 					<SolidColorBrush x:Key="PrimaryColorBrush" Color="{ThemeResource PrimaryColor}"/>
 					<SolidColorBrush x:Key="SecondaryColorBrush" Color="{ThemeResource SecondaryColor}"/>
+					<SolidColorBrush x:Key="CommandBarBackgroundColorBrush" Color="{ThemeResource CommandBarBackgroundColor}"/>
+					
 
 					<SolidColorBrush x:Key="SystemControlHighlightAccentBrush" Color="{ThemeResource PrimaryColor}"/>
 					<SolidColorBrush x:Key="SystemControlHighlightChromeAltLowBrush" Color="{ThemeResource SecondaryColor}"/>

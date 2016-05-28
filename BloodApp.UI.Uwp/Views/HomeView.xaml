@@ -250,7 +250,7 @@
 											<!--  This border is used as a backplate for the header area  -->
 											<Border
                                                 Grid.ColumnSpan="3"
-                                                Background="{ThemeResource SystemControlPageBackgroundChromeMediumBrush}"
+                                                Background="{ThemeResource PrimaryColorBrush}"
                                                 BorderBrush="{ThemeResource SystemControlForegroundChromeMediumBrush}"
                                                 BorderThickness="0,0,0,1" />
 
@@ -342,7 +342,7 @@
 						<local:TabHeader Label="Blood Donations" Glyph="&#xEA37;"/>
 					</PivotItem.Header>
 					<StackPanel>
-						<ProgressBar VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}"/>
+						<ProgressBar VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}" Foreground="{ThemeResource PrimaryColorBrush}"/>
 						<ListView ItemsSource="{Binding DonationsCollection}" SelectedItem="{Binding SelectedBloodDonation, Mode=TwoWay}">
 							<ListView.ItemTemplate>
 								<DataTemplate>
@@ -360,7 +360,7 @@
 						<local:TabHeader Label="Demands" Glyph="&#xE713;"/>
 					</PivotItem.Header>
 					<StackPanel>
-						<ProgressBar VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}"/>
+						<ProgressBar VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}" Foreground="{ThemeResource PrimaryColorBrush}"/>
 
 						<ListView ItemsSource="{Binding BloodDemands}" SelectedItem="{Binding SelectedBloodDemand, Mode=TwoWay}">
 							<ListView.ItemTemplate>
@@ -377,8 +377,8 @@
 			</Pivot>
 		</ScrollViewer>
 
-		<CommandBar VerticalAlignment="Bottom" >
-			<AppBarButton Icon="Add" Label="Add">
+		<CommandBar VerticalAlignment="Bottom" Foreground="{ThemeResource SecondaryColorBrush}" Background="{ThemeResource CommandBarBackgroundColorBrush}" >
+			<AppBarButton Icon="Add" Label="Add" Foreground="{ThemeResource SecondaryColorBrush}">
 				<AppBarButton.Flyout>
 					<MenuFlyout>
 						<MenuFlyoutItem Text="Add Blood Donation" Command="{Binding GoToAddDonationCommand}" />
@@ -387,9 +387,9 @@
 				</AppBarButton.Flyout>
 			</AppBarButton>
 			<!--<AppBarButton Icon="Filter" Label="Filter"></AppBarButton>-->
-			<AppBarButton  Label="Logout" Command="{Binding LogoutCommand}">
+			<AppBarButton  Label="Logout" Command="{Binding LogoutCommand}" Foreground="{ThemeResource SecondaryColorBrush}">
 				<AppBarButton.Icon>
-					<BitmapIcon UriSource="ms-appx:///Assets/logout.png"></BitmapIcon>
+					<BitmapIcon UriSource="ms-appx:///Assets/logout.png" Foreground="{ThemeResource SecondaryColorBrush}"></BitmapIcon>
 				</AppBarButton.Icon>
 			</AppBarButton>
 		</CommandBar>
