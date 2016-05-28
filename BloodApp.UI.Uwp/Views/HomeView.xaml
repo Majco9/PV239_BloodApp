@@ -386,7 +386,7 @@
 					</MenuFlyout>
 				</AppBarButton.Flyout>
 			</AppBarButton>
-			<AppBarButton Icon="Filter" Label="Filter"></AppBarButton>
+			<!--<AppBarButton Icon="Filter" Label="Filter"></AppBarButton>-->
 			<AppBarButton  Label="Logout" Command="{Binding LogoutCommand}">
 				<AppBarButton.Icon>
 					<BitmapIcon UriSource="ms-appx:///Assets/logout.png"></BitmapIcon>
