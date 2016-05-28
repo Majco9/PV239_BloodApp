@@ -37,7 +37,7 @@ namespace BloodApp.UI.Uwp
 		{
 			nameof(HomeViewModel), nameof(BloodDonationListViewModel),
 			nameof(BloodDemandListViewModel), nameof(LoginViewModel),
-			nameof(RegisterViewModel)
+//			nameof(RegisterViewModel)
 		};
 
         /// <summary>
