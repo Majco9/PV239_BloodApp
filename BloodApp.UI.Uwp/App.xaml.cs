@@ -85,11 +85,12 @@ namespace BloodApp.UI.Uwp
                 Window.Current.Content = rootFrame;
 
 				// Title bar button colors
-				ApplicationView.GetForCurrentView().TitleBar.ButtonForegroundColor = Colors.DarkRed;
+	            var primaryColor = Color.FromArgb(255, 239, 35, 88);
+				ApplicationView.GetForCurrentView().TitleBar.ButtonForegroundColor = primaryColor;
 				ApplicationView.GetForCurrentView().TitleBar.ButtonBackgroundColor = Colors.White;
-				ApplicationView.GetForCurrentView().TitleBar.ButtonHoverBackgroundColor = Colors.DarkRed;
+				ApplicationView.GetForCurrentView().TitleBar.ButtonHoverBackgroundColor = primaryColor;
 				ApplicationView.GetForCurrentView().TitleBar.ButtonHoverForegroundColor = Colors.White;
-	            ApplicationView.GetForCurrentView().TitleBar.ButtonPressedBackgroundColor = Colors.DarkRed;
+	            ApplicationView.GetForCurrentView().TitleBar.ButtonPressedBackgroundColor = primaryColor;
 				ApplicationView.GetForCurrentView().TitleBar.ButtonPressedForegroundColor = Colors.White;
 
 				SystemNavigationManager.GetForCurrentView().BackRequested += (sender, args) =>

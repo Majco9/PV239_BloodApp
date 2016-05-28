@@ -14,7 +14,7 @@
 			<RowDefinition Height="2.5*"/>
 			<RowDefinition Height="2*"/>
 		</Grid.RowDefinitions>
-		<ProgressBar VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}"/>
+		<ProgressBar VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}" Foreground="{ThemeResource PrimaryColorBrush}"/>
 		
 		<RelativePanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="15">
 			
@@ -29,8 +29,8 @@
 					RelativePanel.Below="PasswordTextBox"
 					RelativePanel.AlignHorizontalCenterWithPanel="True">
 				<Button x:Name="LogInBtn" x:Uid="SignInBtn" Content="Sign In" Width="100" Margin="0,0,5,0"
-					Command="{Binding LoginCommand}"/>
-				<Button x:Name="RegisterBtn" Width="100" Margin="5,0,0,0"
+					Command="{Binding LoginCommand}" />
+					<Button x:Name="RegisterBtn" Width="100" Margin="5,0,0,0"
 					Content="Register" Command="{Binding GoToRegisterCommand}" />
 			</StackPanel>
 			
