@@ -377,8 +377,8 @@
 			</Pivot>
 		</ScrollViewer>
 
-		<CommandBar VerticalAlignment="Bottom" Foreground="{ThemeResource SecondaryColorBrush}" Background="{ThemeResource CommandBarBackgroundColorBrush}" >
-			<AppBarButton Icon="Add" Label="Add" Foreground="{ThemeResource SecondaryColorBrush}">
+		<CommandBar VerticalAlignment="Bottom" Foreground="{ThemeResource PrimaryColorBrush}" Background="{ThemeResource CommandBarBackgroundColorBrush}" >
+			<AppBarButton Icon="Add" Label="Add" Foreground="{ThemeResource PrimaryColorBrush}">
 				<AppBarButton.Flyout>
 					<MenuFlyout>
 						<MenuFlyoutItem Text="Add Blood Donation" Command="{Binding GoToAddDonationCommand}" />
@@ -387,9 +387,9 @@
 				</AppBarButton.Flyout>
 			</AppBarButton>
 			<!--<AppBarButton Icon="Filter" Label="Filter"></AppBarButton>-->
-			<AppBarButton  Label="Logout" Command="{Binding LogoutCommand}" Foreground="{ThemeResource SecondaryColorBrush}">
+			<AppBarButton  Label="Logout" Command="{Binding LogoutCommand}" Foreground="{ThemeResource PrimaryColorBrush}">
 				<AppBarButton.Icon>
-					<BitmapIcon UriSource="ms-appx:///Assets/logout.png" Foreground="{ThemeResource SecondaryColorBrush}"></BitmapIcon>
+					<BitmapIcon UriSource="ms-appx:///Assets/logout.png" Foreground="{ThemeResource PrimaryColorBrush}"/>
 				</AppBarButton.Icon>
 			</AppBarButton>
 		</CommandBar>
