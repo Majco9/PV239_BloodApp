@@ -16,6 +16,9 @@
 		</Grid.RowDefinitions>
 		<ProgressBar VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}" Foreground="{ThemeResource PrimaryColorBrush}"/>
 
+		<Image Source="../Assets/logo.png" MaxHeight="150" VerticalAlignment="Top" Margin="50"></Image>
+		
+		
 		<Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
 			<Grid.ColumnDefinitions>
