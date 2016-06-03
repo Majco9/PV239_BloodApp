@@ -5,14 +5,7 @@
     xmlns:local="using:BloodApp.UI.Uwp.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:converters="using:BloodApp.UI.Uwp.Converters"
     mc:Ignorable="d">
-
-	<Page.Resources>
-		<ResourceDictionary>
-			<converters:BloodTypeToStringConveter x:Key="BloodTypeToStringConveter" />
-		</ResourceDictionary>
-	</Page.Resources>
 	
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 		<ProgressBar VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}"/>

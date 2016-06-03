@@ -351,9 +351,9 @@
 						<ListView Grid.Row="1" ItemsSource="{Binding DonationsCollection}" SelectedItem="{Binding SelectedBloodDonation, Mode=TwoWay}">
 							<ListView.ItemTemplate>
 								<DataTemplate>
-									<StackPanel>
+									<StackPanel Padding="5,0,5,0">
 										<TextBlock Text="{Binding Name}" Style="{StaticResource BodyTextBlockStyle}" />
-										<TextBlock Text="{Binding Date}" Style="{StaticResource CaptionTextBlockStyle}" />
+										<TextBlock Text="{Binding Date}" Style="{StaticResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" />
 									</StackPanel>
 								</DataTemplate>
 							</ListView.ItemTemplate>
@@ -392,10 +392,21 @@
 						<ListView Grid.Row="1" ItemsSource="{Binding BloodDemands}" SelectedItem="{Binding SelectedBloodDemand, Mode=TwoWay}">
 							<ListView.ItemTemplate>
 								<DataTemplate>
-									<StackPanel>
-										<TextBlock Text="{Binding Title}" Style="{StaticResource BodyTextBlockStyle}" />
-										<TextBlock Text="{Binding Created}" Style="{StaticResource CaptionTextBlockStyle}" />
-									</StackPanel>
+									<Grid MinHeight="50" Padding="0,5,0,0">
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="55"></ColumnDefinition>
+											<ColumnDefinition Width="*"></ColumnDefinition>
+										</Grid.ColumnDefinitions>
+										<Grid.RowDefinitions>
+											<RowDefinition Height="Auto"></RowDefinition>
+											<RowDefinition Height="Auto"></RowDefinition>
+										</Grid.RowDefinitions>
+										<Ellipse Grid.Row="0" Grid.RowSpan="2" Fill="{ThemeResource PrimaryColorBrush}" MaxHeight="40" MaxWidth="40" MinHeight="40" MinWidth="40"></Ellipse>
+										<TextBlock Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Text="{Binding BloodGroup, Converter={StaticResource BloodTypeToStringConveter}}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold"/>
+										
+										<TextBlock Grid.Row="0" Grid.Column="1" Text="Blood Demand" Style="{StaticResource BodyTextBlockStyle}" />
+										<TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Created}" Style="{StaticResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" />
+									</Grid>
 								</DataTemplate>
 							</ListView.ItemTemplate>
 						</ListView>

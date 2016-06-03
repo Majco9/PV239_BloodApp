@@ -16,21 +16,21 @@ namespace BloodApp.UI.Uwp.Converters
 
 			switch (bloodType) {
 				case BloodType.ABNegative:
-					return "AB - Neg.";
+					return "AB-";
 				case BloodType.ABPositive:
-					return "AB - Pos.";
+					return "AB+";
 				case BloodType.ANegative:
-					return "A - Neg.";
+					return "A-";
 				case BloodType.APositive:
-					return "A - Pos.";
+					return "A+";
 				case BloodType.BNegative:
-					return "B - Neg.";
+					return "B-";
 				case BloodType.BPositive:
-					return "B - Pos.";
+					return "B+";
 				case BloodType.ONegative:
-					return "0 - Neg.";
+					return "0-";
 				case BloodType.OPositive:
-					return "0 - Pos.";
+					return "0+";
 
 				default:
 					return string.Empty;

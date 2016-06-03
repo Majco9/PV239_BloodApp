@@ -41,6 +41,7 @@
 			</ResourceDictionary.ThemeDictionaries>
 			
 			<converters:BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+			<converters:BloodTypeToStringConveter x:Key="BloodTypeToStringConveter" />
 
 			<!-- Default style for Windows.UI.Xaml.Controls.Button -->
 			<Style TargetType="Button">
