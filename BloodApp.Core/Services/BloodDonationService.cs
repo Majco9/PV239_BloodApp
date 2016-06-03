@@ -21,7 +21,7 @@ namespace BloodApp.Core.Services
 		public async Task<IList<BloodDonation>> ListAllBloodDonationsAsync()
 		{
 			try {
-				return await this._client.GetTable<BloodDonation>().ToListAsync();
+				return await this._client.GetTable<BloodDonation>().OrderBy(d => d.CreatedAt).ToListAsync();
 			} catch (Exception ex) {
 				throw new ServiceException("Error while getting list of blood donation", ex);
 			}
