@@ -25,14 +25,18 @@
 					<SolidColorBrush x:Key="SystemControlHighlightChromeAltLowBrush" Color="{ThemeResource SecondaryColor}"/>
 					
 					<!-- Buttons Colors -->
-					<SolidColorBrush x:Key="BtnBackgroundColor" Color="White" />
+					<SolidColorBrush x:Key="BtnBackgroundColor" Color="{ThemeResource PrimaryColor}" />
 					<SolidColorBrush x:Key="BtnBorderColor" Color="{ThemeResource PrimaryColor}" />
-					<SolidColorBrush x:Key="BtnForegroundColor" Color="{ThemeResource PrimaryColor}" />
+					<SolidColorBrush x:Key="BtnForegroundColor" Color="White" />
 
 					<SolidColorBrush x:Key="BtnPressedBackgroundColor" Color="{ThemeResource PrimaryColor}" />
 					<!--<SolidColorBrush x:Key="BtnPressedBorderColor" Color="DarkRed" />-->
 					<SolidColorBrush x:Key="BtnPressedForegroundColor" Color="White" />
 
+					<SolidColorBrush x:Key="BtnPointedOverBackgroundColor" Color="White" />
+					<!--<SolidColorBrush x:Key="BtnPressedBorderColor" Color="DarkRed" />-->
+					<SolidColorBrush x:Key="BtnPointedOverForegroundColor" Color="{ThemeResource PrimaryColor}" />
+					
 				</ResourceDictionary>
 			</ResourceDictionary.ThemeDictionaries>
 			
@@ -66,7 +70,7 @@
 											<Storyboard>
 												<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
                                                    Storyboard.TargetProperty="Background">
-													<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource BtnPressedBackgroundColor}" />
+													<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource BtnPointedOverBackgroundColor}" />
 												</ObjectAnimationUsingKeyFrames>
 												<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
                                                    Storyboard.TargetProperty="BorderBrush">
@@ -74,7 +78,7 @@
 												</ObjectAnimationUsingKeyFrames>
 												<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
                                                    Storyboard.TargetProperty="Foreground">
-													<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource BtnPressedForegroundColor}" />
+													<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource BtnPointedOverForegroundColor}" />
 												</ObjectAnimationUsingKeyFrames>
 												<PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
 											</Storyboard>
