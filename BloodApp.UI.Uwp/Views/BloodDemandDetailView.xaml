@@ -14,7 +14,7 @@
 			<TextBlock Text="Demand Detail" Margin="0,0,0,10" Style="{ThemeResource SubheaderTextBlockStyle}" />
 			<StackPanel Orientation="Horizontal" Margin="0,0,0,15">
 				<FontIcon Glyph="&#xE716;" Foreground="{ThemeResource PrimaryColorBrush}"/>
-				<TextBlock Text="{Binding BloodGroup, Converter={StaticResource BloodTypeToStringConveter}}" Margin="10,0,0,0"></TextBlock>
+				<TextBlock Text="{Binding BloodGroup, Converter={StaticResource BloodTypeToStringConveter}, ConverterParameter='long'}" Margin="10,0,0,0"></TextBlock>
 			</StackPanel>
 			<StackPanel Orientation="Horizontal" Margin="0,0,0,15">
 				<FontIcon Glyph="&#xE787;" Foreground="{ThemeResource PrimaryColorBrush}"/>
