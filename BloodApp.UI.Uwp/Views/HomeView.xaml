@@ -371,7 +371,7 @@
 							<!--<AppBarButton Icon="Filter" Label="Filter"></AppBarButton>-->
 
 							<CommandBar.SecondaryCommands>
-								<AppBarButton  Label="Logout" Command="{Binding LogoutCommand}" Foreground="{ThemeResource PrimaryColorBrush}">
+								<AppBarButton  Label="Logout" Command="{Binding LogoutCommand}">
 								</AppBarButton>
 							</CommandBar.SecondaryCommands>
 						</CommandBar>
@@ -429,7 +429,7 @@
 							</AppBarButton>
 
 							<CommandBar.SecondaryCommands>
-								<AppBarButton  Label="Logout" Command="{Binding LogoutCommand}" Foreground="{ThemeResource PrimaryColorBrush}">
+								<AppBarButton  Label="Logout" Command="{Binding LogoutCommand}">
 								</AppBarButton>
 							</CommandBar.SecondaryCommands>
 						</CommandBar>
