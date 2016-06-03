@@ -40,6 +40,7 @@ namespace BloodApp.Core.Services
 				var settings = Mvx.Resolve<ISettings>();
 				settings.Set("token", result.Token);
 				settings.Set("userId", result.User.Id);
+				settings.Set("userBloodGroup", result.User.BloodGroup);
 				
 				MobileServiceUser user = new MobileServiceUser(result.User.Id);
 				user.MobileServiceAuthenticationToken = result.Token;
