@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Acr.Settings;
 using Acr.UserDialogs;
 using BloodApp.Core.Model;
 using BloodApp.Core.Services;
@@ -46,11 +47,31 @@ namespace BloodApp.Core.ViewModels
 			}
 		}
 
+		private bool _showOnlyMyBloodGroups;
+
+		public bool ShowOnlyMyBloodGroups
+		{
+			get { return this._showOnlyMyBloodGroups; }
+			set
+			{
+				this._showOnlyMyBloodGroups = value;
+#pragma warning disable 4014
+				this.LoadData();
+#pragma warning restore 4014
+			}
+		}
+
 		protected async Task LoadData()
 		{
 			this.IsLoading = true;
 			try {
-				var demands = await this._demandService.Value.ListAllBloodDemandsAsync();
+				BloodType? bloodTypeToFilter = null;
+				if (this.ShowOnlyMyBloodGroups) {
+					var settings = Mvx.Resolve<ISettings>();
+					bloodTypeToFilter = settings.Get<BloodType?>("userBloodGroup");
+				}
+
+				var demands = await this._demandService.Value.ListAllBloodDemandsAsync(bloodTypeToFilter);
 				this.BloodDemands = new ObservableCollection<BloodDemandListItemViewModel>(demands
 						.Select(e => new BloodDemandListItemViewModel(e)));
 			} catch (ServiceException) {

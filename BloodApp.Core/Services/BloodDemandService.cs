@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using BloodApp.Core.Model;
 using BloodApp.Core.Services.Exceptions;
+using BloodApp.Core.Utils;
 using Microsoft.WindowsAzure.MobileServices;
 using MvvmCross.Platform;
-using Newtonsoft.Json;
 
 namespace BloodApp.Core.Services
 {
@@ -18,10 +19,16 @@ namespace BloodApp.Core.Services
 			this._client = Mvx.Resolve<IMobileServiceClient>();
 		}
 
-		public async Task<IList<BloodDemand>> ListAllBloodDemandsAsync()
+		public async Task<IList<BloodDemand>> ListAllBloodDemandsAsync(BloodType? bloodType = null)
 		{
 			try {
-				return await this._client.GetTable<BloodDemand>().OrderBy(d => d.CreatedAt).ToListAsync();
+				var demands = await this._client.GetTable<BloodDemand>().OrderBy(d => d.CreatedAt).ToListAsync();
+
+				if (bloodType != null) {
+					demands = demands.Where(d => d.BloodGroup != null && bloodType.Value.IsBloodTypeCompatible(d.BloodGroup.Value)).ToList();
+				}
+
+				return demands;
 			} catch (Exception ex) {
 				throw new ServiceException("Error while getting all blood demands", ex);
 			}

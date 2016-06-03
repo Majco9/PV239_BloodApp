@@ -423,7 +423,7 @@
 							<AppBarButton Icon="Filter" Label="Filter" Foreground="{ThemeResource PrimaryColorBrush}">
 								<AppBarButton.Flyout>
 									<MenuFlyout>
-										<ToggleMenuFlyoutItem Text="Show only for me"></ToggleMenuFlyoutItem>
+										<ToggleMenuFlyoutItem Text="Show only for me" IsChecked="{Binding ShowOnlyMyBloodGroups, Mode=TwoWay}"></ToggleMenuFlyoutItem>
 									</MenuFlyout>
 								</AppBarButton.Flyout>
 							</AppBarButton>
