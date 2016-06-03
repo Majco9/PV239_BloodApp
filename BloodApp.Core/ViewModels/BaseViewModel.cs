@@ -11,6 +11,9 @@ namespace BloodApp.Core.ViewModels
 		private IMvxCommand _backCommand;
 		private bool _isLoading;
 
+		public BaseViewModel Parent { get; set; }
+
+
 		public IMvxCommand BackCommand
 		{
 			get
@@ -57,7 +60,11 @@ namespace BloodApp.Core.ViewModels
 						var userService = Mvx.Resolve<IUserService>();
 						userService.LogoutUser();
 
-						this.Close(this);
+						if (this.Parent != null) {
+							this.Close(this.Parent);
+						} else {
+							this.Close(this);
+						}
 					});
 				}
 

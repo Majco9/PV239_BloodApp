@@ -9,8 +9,8 @@ namespace BloodApp.Core.ViewModels
 	{
 		public HomeViewModel()
 		{
-			this.BloodDonationListViewModel = new BloodDonationListViewModel();
-			this.BloodDemandListViewModel = new BloodDemandListViewModel();
+			this.BloodDonationListViewModel = new BloodDonationListViewModel {Parent = this};
+			this.BloodDemandListViewModel = new BloodDemandListViewModel {Parent =  this};
 		}
 
 		public BloodDemandListViewModel BloodDemandListViewModel { get; private set; }
