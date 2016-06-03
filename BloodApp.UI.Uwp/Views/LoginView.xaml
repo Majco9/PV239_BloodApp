@@ -15,28 +15,36 @@
 			<RowDefinition Height="2*"/>
 		</Grid.RowDefinitions>
 		<ProgressBar VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}" Foreground="{ThemeResource PrimaryColorBrush}"/>
-		
-		<RelativePanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="15">
+
+		<Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="1*"></ColumnDefinition>
+				<ColumnDefinition Width="6*"></ColumnDefinition>
+				<ColumnDefinition Width="1*"></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+			</Grid.RowDefinitions>
 			
-			<TextBox x:Name="EmailTextBox" Width="250" PlaceholderText="Email" 
-					 TextWrapping="Wrap" Text="{Binding Email, Mode=TwoWay}" 
-					 RelativePanel.AlignHorizontalCenterWithPanel="True" />
-			<PasswordBox x:Name="PasswordTextBox" Width="250" PlaceholderText="Heslo" Margin="15"
-					 Password="{Binding Password, Mode=TwoWay}" 
-					 RelativePanel.AlignHorizontalCenterWithPanel="True"
-					 RelativePanel.Below="EmailTextBox"/>
-			<StackPanel Orientation="Horizontal" 
-					RelativePanel.Below="PasswordTextBox"
-					RelativePanel.AlignHorizontalCenterWithPanel="True">
-				<Button x:Name="LogInBtn" x:Uid="SignInBtn" Content="Sign In" Width="100" Margin="0,0,5,0"
-					Command="{Binding LoginCommand}" />
-					<Button x:Name="RegisterBtn" Width="100" Margin="5,0,0,0"
-					Content="Register" Command="{Binding GoToRegisterCommand}" />
-			</StackPanel>
 			
+			<TextBox Grid.Column="1" x:Name="EmailTextBox" PlaceholderText="Email" 
+					 TextWrapping="Wrap" Text="{Binding Email, Mode=TwoWay}" HorizontalAlignment="Stretch" />
+			<PasswordBox Grid.Row="1" Grid.Column="1" x:Name="PasswordTextBox" PlaceholderText="Heslo" Margin="0,15,0,0"
+					 Password="{Binding Password, Mode=TwoWay}" HorizontalAlignment="Stretch" />
+
+			<Button Grid.Row="2" Grid.Column="1" x:Name="LogInBtn" x:Uid="SignInBtn" Content="Sign In" Margin="0,15,0,0"
+					Command="{Binding LoginCommand}" HorizontalAlignment="Stretch" />
+			<Button Grid.Row="3" Grid.Column="1" x:Name="RegisterBtn"  Margin="0,15,0,0"
+					Content="Register" Command="{Binding GoToRegisterCommand}" HorizontalAlignment="Stretch"/>
 
 
-		</RelativePanel>
+
+
+		</Grid>
 	</Grid>
 </local:BaseWinPage>
 
