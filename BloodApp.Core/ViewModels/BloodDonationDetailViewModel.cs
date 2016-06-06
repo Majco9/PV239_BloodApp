@@ -113,14 +113,27 @@ namespace BloodApp.Core.ViewModels
 			get
 			{
 				if (this._deleteCommand == null) {
-					this._deleteCommand = new MvxCommand(() =>
+					this._deleteCommand = new MvxCommand(async () =>
 					{
+						var userDialogs = Mvx.Resolve<IUserDialogs>();
+						var confirmDialogConfig = new ConfirmConfig
+						{
+							Title = "Confirm",
+							Message = "Chcete naozaj zmazat udalost?",
+							CancelText = "Nie",
+							OkText = "Ano"
+						};
+
+						var confirmDialogResult = await userDialogs.ConfirmAsync(confirmDialogConfig);
+
+						if (!confirmDialogResult) {
+							return;
+						}
+
 						try {
-							this._donationService.Value.RemoveBloodDonationAsync(this.BloodDonation);
+							await this._donationService.Value.RemoveBloodDonationAsync(this.BloodDonation);
 							this.Close(this);
-							// todo: add undo dialog
 						} catch (ServiceException) {
-							var userDialogs = Mvx.Resolve<IUserDialogs>();
 							var alertConfig = new AlertConfig
 							{
 								Title = "Error",
