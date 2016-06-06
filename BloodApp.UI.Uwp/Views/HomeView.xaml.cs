@@ -28,6 +28,7 @@ namespace BloodApp.UI.Uwp.Views
 		public HomeView()
 		{
 			this.InitializeComponent();
+			this.NavigationCacheMode = NavigationCacheMode.Required;
 		}
 	}
 }
