@@ -379,7 +379,7 @@
 				</PivotItem>
 				<PivotItem DataContext="{Binding BloodDemandListViewModel}" Margin="0">
 					<PivotItem.Header>
-						<local:TabHeader Label="Demands" Glyph="&#xE713;"/>
+						<local:TabHeader Label="Demands" Glyph="&#xE8FD;"/>
 					</PivotItem.Header>
 					<Grid>
 						<Grid.RowDefinitions>
