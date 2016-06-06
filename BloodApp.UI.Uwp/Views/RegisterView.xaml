@@ -31,9 +31,10 @@
 
 			<TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="BloodGroup" Margin="0,15,0,0"
 				   Style="{StaticResource BodyTextBlockStyle}"/>
+			
 			<ComboBox VerticalAlignment="Stretch" HorizontalAlignment="Stretch" PlaceholderText="Choose your blood group" ItemsSource="{Binding BloodTypes}" SelectedItem="{Binding BloodGroup, Mode=TwoWay}"/>
 			
-			<Button Content="Register" Margin="0,15,0,0" HorizontalAlignment="Center" Command="{Binding RegisterCommand}"/>
+			<Button Content="Register" Margin="0,25,0,0" HorizontalAlignment="Stretch" Command="{Binding RegisterCommand}"/>
 			
 		</StackPanel>
 	</Grid>
