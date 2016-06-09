@@ -21,17 +21,21 @@
 				<TextBlock Text="{Binding Date}" Margin="10,0,0,0"></TextBlock>
 			</StackPanel>
 			<StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-				<FontIcon Glyph="&#xE1C4;" Foreground="{ThemeResource PrimaryColorBrush}"/>
-				<TextBlock Text="{Binding Address}" Margin="10,0,0,0" TextWrapping="Wrap"/>
+				<FontIcon Glyph="&#xE1C4;" VerticalAlignment="Top" Foreground="{ThemeResource PrimaryColorBrush}"/>
+				<TextBlock Text="{Binding Address}" Margin="10,0,0,0" TextTrimming="CharacterEllipsis" />
 			</StackPanel>
 			<TextBlock Margin="0,10,0,0" Text="{Binding Description}" TextWrapping="Wrap" />
 		</StackPanel>
-
-		<CommandBar VerticalAlignment="Bottom" Visibility="{Binding IsUserOwner, Converter={StaticResource BoolToVisibilityConverter}}" Background="{ThemeResource CommandBarBackgroundColorBrush}" Foreground="{ThemeResource PrimaryColorBrush}">
+	</Grid>
+	
+	
+	<Page.BottomAppBar>
+		<CommandBar Visibility="{Binding IsUserOwner, Converter={StaticResource BoolToVisibilityConverter}}" Background="{ThemeResource CommandBarBackgroundColorBrush}" Foreground="{ThemeResource PrimaryColorBrush}">
 			<CommandBar.PrimaryCommands>
 				<AppBarButton Icon="Edit" Label="Edit" Command="{Binding GoToEditCommand}" Foreground="{ThemeResource PrimaryColorBrush}" />
 				<AppBarButton Icon="Delete" Label="Delete" Command="{Binding DeleteCommand}" Foreground="{ThemeResource PrimaryColorBrush}" />
 			</CommandBar.PrimaryCommands>
 		</CommandBar>
-	</Grid>
+	</Page.BottomAppBar>
+	
 </local:BaseWinPage>

@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using BloodApp.Core.ViewModels;
 using MvvmCross.WindowsUWP.Views;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -25,12 +26,38 @@ namespace BloodApp.UI.Uwp.Views
 	{
 		protected override bool ForceHideBackButton { get { return true; } }
 
+		/// <summary>
+		/// Flag, that forces reloading data, when user come back to home page
+		/// </summary>
+		private bool _reloadData = false;
+
 		public HomeView()
 		{
 			this.InitializeComponent();
 			this.NavigationCacheMode = NavigationCacheMode.Required;
 
 
+		}
+		
+
+		protected override void OnNavigatedTo(NavigationEventArgs e)
+		{
+			base.OnNavigatedTo(e);
+
+			if (this._reloadData && this.DataContext != null) {
+				((BaseViewModel)this.DataContext).Start();
+				this._reloadData = false;
+			}
+		}
+
+		protected override void OnNavigatedFrom(NavigationEventArgs e)
+		{
+			base.OnNavigatedFrom(e);
+
+			this._reloadData = true;
+
+			this.DemandsList.SelectedItem = null;
+			this.DonationsList.SelectedItem = null;
 		}
 
 		private void PagePivot_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
