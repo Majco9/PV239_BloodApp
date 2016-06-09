@@ -1,5 +1,5 @@
-# PV239_BloodApp
-Cross-platform mobile app for PV239 course
+# PV239 Give Blood
+Universal Windows app for PV239 course
 
 Platforms:
  * Universal Windows platform
