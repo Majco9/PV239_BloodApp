@@ -55,6 +55,23 @@ namespace BloodApp.Core.ViewModels
 			set
 			{
 				this._showOnlyMyBloodGroups = value;
+				this.RaisePropertyChanged();
+#pragma warning disable 4014
+				this.LoadData();
+#pragma warning restore 4014
+			}
+		}
+
+		private bool _showOnlyMyDemands;
+
+		public bool ShowOnlyMyDemands
+		{
+			get { return this._showOnlyMyDemands; }
+			set
+			{
+				this._showOnlyMyDemands = value;
+				this.RaisePropertyChanged();
+
 #pragma warning disable 4014
 				this.LoadData();
 #pragma warning restore 4014
@@ -71,7 +88,7 @@ namespace BloodApp.Core.ViewModels
 					bloodTypeToFilter = settings.Get<BloodType?>("userBloodGroup");
 				}
 
-				var demands = await this._demandService.Value.ListAllBloodDemandsAsync(bloodTypeToFilter);
+				var demands = await this._demandService.Value.ListAllBloodDemandsAsync(bloodTypeToFilter, this.ShowOnlyMyDemands);
 				this.BloodDemands = new ObservableCollection<BloodDemandListItemViewModel>(demands
 						.Select(e => new BloodDemandListItemViewModel(e)));
 			} catch (ServiceException) {

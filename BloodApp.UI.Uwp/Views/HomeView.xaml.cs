@@ -29,6 +29,28 @@ namespace BloodApp.UI.Uwp.Views
 		{
 			this.InitializeComponent();
 			this.NavigationCacheMode = NavigationCacheMode.Required;
+
+
+		}
+
+		private void PagePivot_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			var selectedPivotItem = e.AddedItems[0];
+
+			// update filter menu flyout
+			if (selectedPivotItem.Equals(this.DemandsPage)) {
+				this.DemandsForMeFilterMenuItem.Visibility = Visibility.Visible;
+				this.MyDemandsFilterMenuItem.Visibility = Visibility.Visible;
+
+				this.MyDonationFilterMenuItem.Visibility = Visibility.Collapsed;
+				this.PastEventsFilterMenuItem.Visibility = Visibility.Collapsed;
+			} else {
+				this.MyDonationFilterMenuItem.Visibility = Visibility.Visible;
+				this.PastEventsFilterMenuItem.Visibility = Visibility.Visible;
+
+				this.DemandsForMeFilterMenuItem.Visibility = Visibility.Collapsed;
+				this.MyDemandsFilterMenuItem.Visibility = Visibility.Collapsed;
+			}
 		}
 	}
 }

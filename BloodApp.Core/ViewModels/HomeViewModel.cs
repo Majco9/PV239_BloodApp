@@ -29,7 +29,45 @@ namespace BloodApp.Core.ViewModels
 			get { return this.BloodDemandListViewModel.IsLoading || this.BloodDonationListViewModel.IsLoading; }
 		}
 
-		
+		public bool ShowOnlyMyBloodGroups
+		{
+			get { return this.BloodDemandListViewModel.ShowOnlyMyBloodGroups; }
+			set
+			{
+				this.BloodDemandListViewModel.ShowOnlyMyBloodGroups = value;
+				this.RaisePropertyChanged();
+			}
+		}
 
+		public bool ShowOnlyMyDemands
+		{
+			get { return this.BloodDemandListViewModel.ShowOnlyMyDemands; }
+			set
+			{
+				this.BloodDemandListViewModel.ShowOnlyMyDemands = value;
+				this.RaisePropertyChanged();
+			}
+		}
+
+		public bool ShowOnlyMyEvents
+		{
+			get { return this.BloodDonationListViewModel.ShowOnlyMyEvents; }
+			set
+			{
+				this.BloodDonationListViewModel.ShowOnlyMyEvents = value;
+				this.RaisePropertyChanged();
+			}
+		}
+
+		public bool IncludePastEvents
+		{
+			get { return this.BloodDonationListViewModel.IncludePastEvents; }
+			set
+			{
+				this.BloodDonationListViewModel.IncludePastEvents = value;
+				this.RaisePropertyChanged();
+			}
+		}
+		
 	}
 }

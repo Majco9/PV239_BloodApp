@@ -11,7 +11,7 @@ namespace BloodApp.Core.Services
 		/// </summary>
 		/// <param name="bloodType">Blood type to filtering, when null then no filtering executed</param>
 		/// <returns>list contains blood demands</returns>
-		Task<IList<BloodDemand>> ListAllBloodDemandsAsync(BloodType? bloodType = null);
+		Task<IList<BloodDemand>> ListAllBloodDemandsAsync(BloodType? bloodType = null, bool showOnlyMyDemands = false);
 
 		/// <summary>
 		/// Returns blood demand with given id

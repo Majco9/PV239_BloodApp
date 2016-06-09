@@ -40,6 +40,37 @@ namespace BloodApp.Core.ViewModels
 			}
 		}
 
+		private bool _showOnlyMyEvents;
+
+		public bool ShowOnlyMyEvents
+		{
+			get { return this._showOnlyMyEvents; }
+			set
+			{
+				this._showOnlyMyEvents = value;
+				this.RaisePropertyChanged();
+
+#pragma warning disable 4014
+				this.LoadData();
+#pragma warning restore 4014
+			}
+		}
+
+		public bool _includePastEvents;
+
+		public bool IncludePastEvents
+		{
+			get { return this._includePastEvents; }
+			set
+			{
+				this._includePastEvents = value;
+				this.RaisePropertyChanged();
+
+#pragma warning disable 4014
+				this.LoadData();
+#pragma warning restore 4014
+			}
+		}
 
 		public BloodDonationListViewModel()
 		{
@@ -52,16 +83,15 @@ namespace BloodApp.Core.ViewModels
 		{
 			this.IsLoading = true;
 			try {
-				var events = await this._eventService.Value.ListAllBloodDonationsAsync();
+				var events = await this._eventService.Value.ListAllBloodDonationsAsync(this.ShowOnlyMyEvents, this.IncludePastEvents);
 				this.DonationsCollection = new ObservableCollection<BloodDonationListItemViewModel>(events
 						.Select(e => new BloodDonationListItemViewModel(e)));
 			} catch (ServiceException ex) {
-				//todo: handle it (some toast)
 				var userDialogs = Mvx.Resolve<IUserDialogs>();
 				var alertConfig = new AlertConfig
 				{
 					Title = "Error",
-					Message = "Login was unsuccessful!"
+					Message = "Error while loading data!"
 				};
 				userDialogs.Alert(alertConfig);
 				Debug.WriteLine("Error while loading data..message: {0}", ex.Message);

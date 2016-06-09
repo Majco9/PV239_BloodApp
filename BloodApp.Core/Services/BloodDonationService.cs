@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Acr.Settings;
 using BloodApp.Core.Model;
 using BloodApp.Core.Services.Exceptions;
 using Microsoft.WindowsAzure.MobileServices;
@@ -18,10 +20,33 @@ namespace BloodApp.Core.Services
 			this._client = Mvx.Resolve<IMobileServiceClient>();
 		}
 
-		public async Task<IList<BloodDonation>> ListAllBloodDonationsAsync()
+		public async Task<IList<BloodDonation>> ListAllBloodDonationsAsync(bool filterMyEvents = false, bool includePastEvents = false)
 		{
 			try {
-				return await this._client.GetTable<BloodDonation>().OrderBy(d => d.CreatedAt).ToListAsync();
+				var events = await this._client.GetTable<BloodDonation>().OrderBy(d => d.CreatedAt).ToListAsync();
+				
+				// filter collection
+				if (filterMyEvents || !includePastEvents) {
+					var userId = Mvx.Resolve<ISettings>().Get("userId",string.Empty);
+
+					events = events.Where(donation =>
+					{
+						bool myEventsresult = true;
+						bool dateFilterResult = true;
+
+						if (filterMyEvents) {
+							myEventsresult = donation.DonorId == userId;
+						}
+
+						if (!includePastEvents) {
+							dateFilterResult = donation.Date.HasValue && DateTime.Compare(donation.Date.Value, DateTime.Now) >= 0;
+						}
+						
+						return dateFilterResult && myEventsresult;
+					}).ToList();
+				}
+
+				return events;
 			} catch (Exception ex) {
 				throw new ServiceException("Error while getting list of blood donation", ex);
 			}

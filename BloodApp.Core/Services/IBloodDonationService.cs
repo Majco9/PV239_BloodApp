@@ -11,7 +11,7 @@ namespace BloodApp.Core.Services
 		/// Returns list of blood donation events
 		/// </summary>
 		/// <returns>list of blood donation events</returns>
-		Task<IList<BloodDonation>> ListAllBloodDonationsAsync();
+		Task<IList<BloodDonation>> ListAllBloodDonationsAsync(bool filterMyEvents = false, bool includePastEvents = false);
 
 		/// <summary>
 		/// Returns blood donation with given id

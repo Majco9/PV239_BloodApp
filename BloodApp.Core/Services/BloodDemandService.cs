@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Acr.Settings;
 using BloodApp.Core.Model;
 using BloodApp.Core.Services.Exceptions;
 using BloodApp.Core.Utils;
@@ -19,13 +20,28 @@ namespace BloodApp.Core.Services
 			this._client = Mvx.Resolve<IMobileServiceClient>();
 		}
 
-		public async Task<IList<BloodDemand>> ListAllBloodDemandsAsync(BloodType? bloodType = null)
+		public async Task<IList<BloodDemand>> ListAllBloodDemandsAsync(BloodType? bloodType = null, bool showOnlyMyDemands = false)
 		{
 			try {
 				var demands = await this._client.GetTable<BloodDemand>().OrderBy(d => d.CreatedAt).ToListAsync();
 
-				if (bloodType != null) {
-					demands = demands.Where(d => d.BloodGroup != null && bloodType.Value.IsBloodTypeCompatible(d.BloodGroup.Value)).ToList();
+				// filter collection
+				if (bloodType != null || showOnlyMyDemands) {
+					var userId = Mvx.Resolve<ISettings>().Get("userId", string.Empty);
+					demands = demands.Where(d =>
+					{
+						var result = true;
+
+						if (bloodType != null) {
+							result = d.BloodGroup != null && bloodType.Value.IsBloodTypeCompatible(d.BloodGroup.Value);
+						}
+
+						if (showOnlyMyDemands) {
+							result = d.PublisherdId == userId;
+						}
+
+						return result;
+					}).ToList();
 				}
 
 				return demands;
