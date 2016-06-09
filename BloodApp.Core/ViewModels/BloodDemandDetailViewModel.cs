@@ -48,7 +48,7 @@ namespace BloodApp.Core.ViewModels
 				var alertConfig = new AlertConfig
 				{
 					Title = "Error",
-					Message = "Erro while loading donation event!"
+					Message = "Error while loading donation event!"
 				};
 				userDialogs.Alert(alertConfig);
 				this.Close(this);

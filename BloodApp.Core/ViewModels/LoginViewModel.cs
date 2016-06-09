@@ -48,18 +48,23 @@ namespace BloodApp.Core.ViewModels
 						this.IsLoading = true;
 						var userDialogs = Mvx.Resolve<IUserDialogs>();
 
-						var loginService = Mvx.Resolve<IUserService>();
-						var loginResult = await loginService.AuthenticateAsync(this._email, this._password);
-						if (loginResult) {
-							this.ShowViewModel<HomeViewModel>();
+						if (this.ValidForm()) {
+
+							var loginService = Mvx.Resolve<IUserService>();
+							var loginResult = await loginService.AuthenticateAsync(this._email, this._password);
+							if (loginResult) {
+								this.ShowViewModel<HomeViewModel>();
+							} else {
+								var alertConfig = new AlertConfig
+								{
+									Title = "Error",
+									Message = "Sorry, that login was invalid. Please try again."
+								};
+								userDialogs.Alert(alertConfig);
+							}
+
 						} else {
-							var textProvider = Mvx.Resolve<ITextProvider>();
-							var alertConfig = new AlertConfig
-							{
-								Title = "Error",
-								Message = textProvider.GetText("SignInErrorText")
-							};
-							userDialogs.Alert(alertConfig);
+							userDialogs.Alert("Some field is empty.", "Error");
 						}
 						this.IsLoading = false;
 					});
@@ -67,6 +72,11 @@ namespace BloodApp.Core.ViewModels
 
 				return this._loginCommand;
 			}
+		}
+
+		private bool ValidForm()
+		{
+			return !string.IsNullOrEmpty(this.Email) && !string.IsNullOrEmpty(this.Password);
 		}
 
 		public IMvxCommand GoToRegisterCommand

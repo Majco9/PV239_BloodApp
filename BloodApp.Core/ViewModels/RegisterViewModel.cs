@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Acr.Settings;
+using Acr.UserDialogs;
 using BloodApp.Core.Model;
 using BloodApp.Core.Model.Register;
 using BloodApp.Core.Services;
@@ -26,6 +27,8 @@ namespace BloodApp.Core.ViewModels
 				if (this._registerCommand == null) {
 					this._registerCommand = new MvxCommand(async () =>
 					{
+
+						var userDialogs = Mvx.Resolve<IUserDialogs>();
 						this.IsLoading = true;
 						if (this.ValidForm()) {
 
@@ -43,17 +46,21 @@ namespace BloodApp.Core.ViewModels
 							var registerResult = await userService.RegisterUserAsync(registration);
 
 							if (registerResult) {
-								//todo: show dialog
+								
 								var settings = Mvx.Resolve<ISettings>();
 								settings.Set("NotFirstAppAppRun", true);
 
 								await userService.AuthenticateAsync(this.Email, this.Password);
 								this.ShowViewModel<HomeViewModel>();
 							} else {
-								//todo: show error dialog
+								userDialogs.Alert("Create account failed. Please try again.");
 							}
 						} else {
-							// totod: show error dialog
+							if (this.Password != this.ConfirmPassword) {
+								userDialogs.Alert("Password and password confirmation do not match.", "Error");
+							} else {
+								userDialogs.Alert("Some required information is missing or incomplete.", "Error");
+							}
 						}
 
 						this.IsLoading = false;

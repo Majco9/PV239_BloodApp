@@ -34,9 +34,18 @@
 			
 			<ComboBox VerticalAlignment="Stretch" HorizontalAlignment="Stretch" PlaceholderText="Choose your blood group" ItemsSource="{Binding BloodTypes}" SelectedItem="{Binding BloodGroup, Mode=TwoWay}"/>
 			
-			<Button Content="Register" Margin="0,25,0,0" HorizontalAlignment="Stretch" Command="{Binding RegisterCommand}"/>
+			<!--<Button Content="Register" Margin="0,25,0,0" HorizontalAlignment="Stretch" Command="{Binding RegisterCommand}"/>-->
 			
 		</StackPanel>
 	</Grid>
+	
+	<Page.BottomAppBar>
+		<CommandBar Background="{ThemeResource CommandBarBackgroundColorBrush}" Foreground="{ThemeResource PrimaryColorBrush}">
+			<CommandBar.PrimaryCommands>
+				<AppBarButton Icon="Accept" Label="Create account" Command="{Binding RegisterCommand}" Foreground="{ThemeResource PrimaryColorBrush}" />
+			</CommandBar.PrimaryCommands>
+		</CommandBar>
+	</Page.BottomAppBar>
+	
 </local:BaseWinPage>
 

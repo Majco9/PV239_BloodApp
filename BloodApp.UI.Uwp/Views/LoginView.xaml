@@ -39,7 +39,7 @@
 			<PasswordBox Grid.Row="1" Grid.Column="1" x:Name="PasswordTextBox" PlaceholderText="Password" Margin="0,15,0,0"
 					 Password="{Binding Password, Mode=TwoWay}" HorizontalAlignment="Stretch" />
 
-			<Button Grid.Row="2" Grid.Column="1" x:Name="LogInBtn" x:Uid="SignInBtn" Content="Sign In" Margin="0,15,0,0"
+			<Button Grid.Row="2" Grid.Column="1" x:Name="LogInBtn" Content="Sign In" Margin="0,15,0,0"
 					Command="{Binding LoginCommand}" HorizontalAlignment="Stretch" />
 			<Button Grid.Row="3" Grid.Column="1" x:Name="RegisterBtn"  Margin="0,15,0,0"
 					Content="Create account" Command="{Binding GoToRegisterCommand}" HorizontalAlignment="Stretch"/>

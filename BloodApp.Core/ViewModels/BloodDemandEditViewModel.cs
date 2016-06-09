@@ -53,30 +53,40 @@ namespace BloodApp.Core.ViewModels
 				if (this._saveCommand == null) {
 					this._saveCommand = new MvxCommand(async () =>
 					{
-						// todo: validate form
+						var userDialogs = Mvx.Resolve<IUserDialogs>();
+						if (this.ValidForm()) {
+							try {
+								if (this._editMode == EditMode.Creating) {
+									await this._demandService.Value.CreateBloodDemandAsync(this.BloodDemand);
+								} else {
+									await this._demandService.Value.UpdateBloodDemandAsync(this.BloodDemand);
+								}
 
-						try {
-							if (this._editMode == EditMode.Creating) {
-								await this._demandService.Value.CreateBloodDemandAsync(this.BloodDemand);
-							} else {
-								await this._demandService.Value.UpdateBloodDemandAsync(this.BloodDemand);
+								this.Close(this);
+							} catch (ServiceException) {
+								
+								var alertConfig = new AlertConfig
+								{
+									Title = "Error",
+									Message = "Error while creating new demand!"
+								};
+								userDialogs.Alert(alertConfig);
 							}
-
-							this.Close(this);
-						} catch (ServiceException) {
-							var userDialogs = Mvx.Resolve<IUserDialogs>();
-							var alertConfig = new AlertConfig
-							{
-								Title = "Error",
-								Message = "Error while creating new demand!"
-							};
-							userDialogs.Alert(alertConfig);
+						} else {
+							userDialogs.Alert("Some required information is missing or incomplete.", "Error");
 						}
 					});
 				}
 
 				return this._saveCommand;
 			}
+		}
+
+		private bool ValidForm()
+		{
+			return !string.IsNullOrEmpty(this.Description) && !string.IsNullOrEmpty(this.Instructions)
+					&& this.BloodGroup != null;
+
 		}
 
 		public string Description

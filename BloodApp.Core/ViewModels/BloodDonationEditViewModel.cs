@@ -192,12 +192,13 @@ namespace BloodApp.Core.ViewModels
 				if (this._saveCommand == null) {
 					this._saveCommand = new MvxCommand(async () =>
 					{
-						// todo: validate form
+						var userDialogs = Mvx.Resolve<IUserDialogs>();
 						if (!this.ValidateForm()) {
-							// todo: handle it
+							userDialogs.Alert("Some required information is missing or incomplete.", "Error");
+							return;
 						}
 
-							this.BloodDonation.Date = this.PrepareTimeAndDate();
+						this.BloodDonation.Date = this.PrepareTimeAndDate();
 
 							try {
 								if (this._editMode == EditMode.Creating) {
@@ -208,7 +209,6 @@ namespace BloodApp.Core.ViewModels
 
 								this.Close(this);
 							} catch (ServiceException) {
-								var userDialogs = Mvx.Resolve<IUserDialogs>();
 								userDialogs.Alert(new AlertConfig {Title = "Error", Message = "Error while creating new donation"});
 							}
 						
@@ -221,7 +221,11 @@ namespace BloodApp.Core.ViewModels
 
 		private bool ValidateForm()
 		{
-			return true;
+			return !string.IsNullOrEmpty(this.Name) && !string.IsNullOrEmpty(this.OrganizatorName)
+				&& this.Date != null && this.Time != null && !string.IsNullOrEmpty(this.Description)
+				&& !string.IsNullOrEmpty(this.PlaceTitle) && !string.IsNullOrEmpty(this.Street)
+				&& !string.IsNullOrEmpty(this.City) && !string.IsNullOrEmpty(this.State)
+				&& !string.IsNullOrEmpty(this.ZipCode);
 		}
 
 		private DateTime? PrepareTimeAndDate()
