@@ -23,7 +23,7 @@ namespace BloodApp.Core.Services
 		public async Task<IList<BloodDemand>> ListAllBloodDemandsAsync(BloodType? bloodType = null, bool showOnlyMyDemands = false)
 		{
 			try {
-				var demands = await this._client.GetTable<BloodDemand>().OrderBy(d => d.CreatedAt).ToListAsync();
+				var demands = await this._client.GetTable<BloodDemand>().OrderByDescending(d => d.CreatedAt).ToListAsync();
 
 				// filter collection
 				if (bloodType != null || showOnlyMyDemands) {

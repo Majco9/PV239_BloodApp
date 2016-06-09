@@ -11,7 +11,7 @@
 		<ProgressBar VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}"/>
 		<StackPanel Padding="10">
 
-			<TextBlock Text="Demand Detail" Margin="0,0,0,10" Style="{ThemeResource SubheaderTextBlockStyle}" />
+			<TextBlock Text="Demand Details" Margin="0,0,0,10" Style="{ThemeResource SubheaderTextBlockStyle}" />
 			<StackPanel Orientation="Horizontal" Margin="0,0,0,15">
 				<FontIcon Glyph="&#xE716;" Foreground="{ThemeResource PrimaryColorBrush}"/>
 				<TextBlock Text="{Binding BloodGroup, Converter={StaticResource BloodTypeToStringConveter}, ConverterParameter='long'}" Margin="10,0,0,0"></TextBlock>

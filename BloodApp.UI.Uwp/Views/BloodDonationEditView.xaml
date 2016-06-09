@@ -38,9 +38,17 @@
 
 				<TextBox Margin="0,15,0,0" Text="{Binding ZipCode, Mode=TwoWay}" Header="Zip Code" />
 
-				<Button HorizontalAlignment="Stretch" Margin="0,25,0,0" Content="Save" Command="{Binding SaveCommand}" />
+				<!--<Button HorizontalAlignment="Stretch" Margin="0,25,0,0" Content="Save" Command="{Binding SaveCommand}" />-->
 				
 			</StackPanel>
 		</ScrollViewer>
 	</Grid>
+
+	<Page.BottomAppBar>
+		<CommandBar Foreground="{ThemeResource PrimaryColorBrush}">
+			<CommandBar.PrimaryCommands>
+				<AppBarButton Icon="Save" Label="Save" Command="{Binding SaveCommand}" Foreground="{ThemeResource PrimaryColorBrush}"/>
+			</CommandBar.PrimaryCommands>
+		</CommandBar>
+	</Page.BottomAppBar>
 </local:BaseWinPage>

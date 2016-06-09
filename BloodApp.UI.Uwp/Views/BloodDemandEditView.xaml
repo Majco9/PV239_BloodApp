@@ -20,9 +20,18 @@
 
 				<ComboBox Margin="0,15,0,0" Header="Blood Group" HorizontalAlignment="Stretch" PlaceholderText="Select blood group" ItemsSource="{Binding BloodTypes}" SelectedItem="{Binding BloodGroup, Mode=TwoWay}" />
 
-				<Button Margin="0,25,0,0" HorizontalAlignment="Stretch" Content="Save" Command="{Binding SaveCommand}" />
+				<!--<Button Margin="0,25,0,0" HorizontalAlignment="Stretch" Content="Save" Command="{Binding SaveCommand}" />-->
 
 			</StackPanel>
 		</ScrollViewer>
 	</Grid>
+	
+	<Page.BottomAppBar>
+		<CommandBar Foreground="{ThemeResource PrimaryColorBrush}">
+			<CommandBar.PrimaryCommands>
+				<AppBarButton Icon="Save" Label="Save" Command="{Binding SaveCommand}" Foreground="{ThemeResource PrimaryColorBrush}"/>
+			</CommandBar.PrimaryCommands>
+		</CommandBar>
+	</Page.BottomAppBar>
+	
 </local:BaseWinPage>

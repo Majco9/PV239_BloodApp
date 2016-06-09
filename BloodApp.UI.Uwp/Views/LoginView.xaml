@@ -36,13 +36,13 @@
 			
 			<TextBox Grid.Column="1" x:Name="EmailTextBox" PlaceholderText="Email" 
 					 TextWrapping="Wrap" Text="{Binding Email, Mode=TwoWay}" HorizontalAlignment="Stretch" />
-			<PasswordBox Grid.Row="1" Grid.Column="1" x:Name="PasswordTextBox" PlaceholderText="Heslo" Margin="0,15,0,0"
+			<PasswordBox Grid.Row="1" Grid.Column="1" x:Name="PasswordTextBox" PlaceholderText="Password" Margin="0,15,0,0"
 					 Password="{Binding Password, Mode=TwoWay}" HorizontalAlignment="Stretch" />
 
 			<Button Grid.Row="2" Grid.Column="1" x:Name="LogInBtn" x:Uid="SignInBtn" Content="Sign In" Margin="0,15,0,0"
 					Command="{Binding LoginCommand}" HorizontalAlignment="Stretch" />
 			<Button Grid.Row="3" Grid.Column="1" x:Name="RegisterBtn"  Margin="0,15,0,0"
-					Content="Register" Command="{Binding GoToRegisterCommand}" HorizontalAlignment="Stretch"/>
+					Content="Create account" Command="{Binding GoToRegisterCommand}" HorizontalAlignment="Stretch"/>
 
 
 

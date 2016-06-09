@@ -23,7 +23,7 @@ namespace BloodApp.Core.Services
 		public async Task<IList<BloodDonation>> ListAllBloodDonationsAsync(bool filterMyEvents = false, bool includePastEvents = false)
 		{
 			try {
-				var events = await this._client.GetTable<BloodDonation>().OrderBy(d => d.CreatedAt).ToListAsync();
+				var events = await this._client.GetTable<BloodDonation>().OrderByDescending(d => d.Date).ToListAsync();
 				
 				// filter collection
 				if (filterMyEvents || !includePastEvents) {
