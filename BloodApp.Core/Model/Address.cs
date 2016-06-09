@@ -32,7 +32,7 @@
 
 		public override string ToString()
 		{
-			return $"{this.Title}, {this.Street}, {this.City}, {this.State} {this.ZipCode}";
+			return $"{this.Title}, {this.Street} \r\n{this.City}, {this.ZipCode}";
 		}
 	}
 }
